@@ -84,10 +84,10 @@ end
 function giverocket(settings)
 end
 
---- Teleports the player.
---- @param xpos (float) Teleport the player (xpos) blocks among the x-axis.
---- @param ypos (float) Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
---- @param keepvelocity (Boolean) Determines if the player keeps their velocity after teleportation. "false" by default.
+--- Teleports the player to the given direction.
+--- @param xpos (number) Teleport the player (xpos) blocks among the x-axis.
+--- @param ypos (number) Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
+--- @param keepvelocity (boolean) Determines if the player keeps their velocity after teleportation. False by default.
 function teleportto(xpos, ypos, keepvelocity)
 end
 
