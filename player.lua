@@ -83,3 +83,16 @@ end
 --- @usage giverocket(toobject{ammo=5,reload=4})
 function giverocket(settings)
 end
+
+--- Teleports a player.
+--- @param xpos (float) Teleport the player (xpos) blocks among the x-axis.
+--- @param ypos (float) Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
+--- @param keepvelocity (Boolean) Determines if the player keeps their velocity after teleportation. "false" by default.
+function teleportto(xpos, ypos, keepvelocity)
+end
+
+--- Rotates a player to a given rotation at a given speed.
+--- @param value (float) Sets the angle that the player will be rotated to in the nearest increment of 90.
+--- @param amplifier (Number) Sets the speed amplifier of the rotation speed. For reference, Fez rotates at 10 amplifier.
+function rotate(value, amplifier)
+end
