@@ -20,6 +20,13 @@ canmove = false
 function move(direction, moveDelay, movePlayer)
 end
 
+--- Teleports the block in the given direction.
+--- @param xpos (number) The amount to move the block among the x-axis.
+--- @param ypos (number) The amount to move the block among the y-axis.
+--- @param removecurrentblock (boolean) If the original block should be deleted among a successful teleportation. True by default.
+--- @param removetargetspot (boolean) If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
+function teleportto(xpos, ypos, removecurrentblock, removetargetspot)
+
 --- Makes the block vanish and reappear later. The vanish delay can be passed.
 --- @param time The amount of time until vanishing. Vanishes instantly by default.
 function vanish(time)
