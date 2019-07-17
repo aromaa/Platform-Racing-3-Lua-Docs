@@ -20,7 +20,7 @@ canmove = false
 function move(direction, moveDelay, movePlayer)
 end
 
---- Teleports the block in the given direction.
+--- Teleports the block in the given direction. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
 --- @tparam int xpos The amount to move the block among the x-axis.
 --- @tparam int ypos The amount to move the block among the y-axis.
 --- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
