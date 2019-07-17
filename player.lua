@@ -26,20 +26,20 @@ accel = 50
 gravity = 1
 
 --- Hurts the player by a specific amount and with a specified velocity.
---- @param damage The amount of damage done to the player. By default 1.
---- @param vel The strength of the impact that pushes the player. By default 0.3.
+--- @tparam int damage The amount of damage done to the player. By default 1.
+--- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
 function hurt(damage, vel)
 end
 
 --- Sets a metadata with a specified key-value pair to the player.
---- @param key Name of the metadata variable (the key)
+--- @tparam string key Name of the metadata variable (the key)
 --- @param value Value of the metadata variable
 --- @usage setmetadata("coins", 10)
 function setmetadata(key, value)
 end
 
 --- Gets a player metadata value with the specified key.
---- @param key The key (metadata variable name) that's used to find its value.
+--- @tparam string key The key (metadata variable name) that's used to find its value.
 --- @param defaultValue The value to return if the searched key does not exists. By default no specific value is returned.
 --- @return Returns the key's value. Returns defaultValue instead if the key isn't found.
 --- @usage getmetadata("coins", 0)
@@ -47,13 +47,13 @@ function getmetadata(key, defaultValue)
 end
 
 --- Sends an alert popup to the player.
---- @param message The message to show the player.
+--- @tparam string message The message to show the player.
 function alert(message)
 end
 
 --- Sends a chat message to the player.
---- @param message The message to show to the player.
---- @param color The decimal (or hex) value of the RGB color to use. By default #1D5497.
+--- @tparam string message The message to show to the player.
+--- @tparam int color The decimal (or hex) value of the RGB color to use. By default #1D5497.
 --- @usage chat('hello', 0x1D5497)
 --- @usage chat('hello', 1922199)
 function chat(message, color)
@@ -82,4 +82,17 @@ end
 --- @param settings The given rocket launcher item as an AS3 Object.
 --- @usage giverocket(toobject{ammo=5,reload=4})
 function giverocket(settings)
+end
+
+--- Teleports the player to the given direction.
+--- @tparam number xpos Teleport the player (xpos) blocks among the x-axis.
+--- @tparam number ypos Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
+--- @tparam boolean keepvelocity Determines if the player keeps their velocity after teleportation. False by default.
+function teleportto(xpos, ypos, keepvelocity)
+end
+
+--- Rotates a player to a given rotation at a given speed.
+--- @param value (float) Sets the angle that the player will be rotated to in the nearest increment of 90.
+--- @param amplifier (Number) Sets the speed amplifier of the rotation speed. For reference, Fez rotates at 10 amplifier.
+function rotate(value, amplifier)
 end
