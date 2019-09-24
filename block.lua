@@ -15,8 +15,8 @@ canmove = false
 --- @tparam number moveDelay The delay of how long it takes to the block to be able to be moved again. By default 100 (ms).
 --- @tparam boolean movePlayer Is the player also moved? By default false.
 --- @treturn boolean Returns whatever the move was successful
---- @usage move("right")
---- @usage move("right", 200, true)
+--- @usage block.move("right")
+--- @usage block.move("right", 200, true)
 function move(direction, moveDelay, movePlayer)
 end
 
@@ -26,6 +26,7 @@ end
 --- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
 --- @tparam boolean removetargetspot If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
 --- @treturn boolean Returns whether the move was successful.
+--- @usage block.teleportto(0, -7, false, true)
 function teleportto(xpos, ypos, removecurrentblock, removetargetspot)
 end
 
@@ -37,6 +38,7 @@ end
 --- Makes the block explode, damaging the player in the process.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
+--- @usage block.explode(3, 1.1)
 function explode(damage, vel)
 end
 
@@ -44,8 +46,9 @@ end
 --- Causes the block's health to drop and shatters the block if it goes to zero or below.
 --- @tparam boolean particles Whatever to show particles when damage. By default true.
 --- @tparam number damageModifier Modifier used to calculate the velocity to damage. By default 100.
---- @tparam number damagaThreshold The threshold for how high the damage has to be to damage this block. By default 7.
-function crumble(particles, damageModifier, damagaThreshold)
+--- @tparam number damageThreshold The threshold for how high the damage has to be to damage this block. By default 7.
+--- @usage block.crumble(true, 120, 20)
+function crumble(particles, damageModifier, damageThreshold)
 end
 
 --- Destroys the block by shattering it.
@@ -57,14 +60,15 @@ end
 --- @tparam int y How many blocks downwards the wanted block is?
 --- @tparam boolean keepPlayerReference Is the player reference kept? By default false.
 --- @return The found block as an object. Returns nil if a block isn't found.
---- @usage getblock(0,-1).shatter()
+--- @usage block.getblock(0,-1).shatter()
 function getblock(x, y, keepPlayerReference)
 end
 
 --- Sets a metadata with a specified key-value pair to the block.
 --- @tparam string key Name of the metadata variable (the key)
 --- @param value Value of the metadata variable
---- @usage setmetadata("coins", 10)
+--- @usage block.setmetadata("coins", 10)
+--- @usage block.setmetadata("block name", "aqua")
 function setmetadata(key, value)
 end
 
@@ -72,6 +76,7 @@ end
 --- @tparam string key The key (metadata variable name) that's used to find its value.
 --- @param defaultValue The value to return if the searched key does not exists. By default no specific value is returned.
 --- @return Returns the key's value. Returns defaultValue instead if the key isn't found.
---- @usage getmetadata("coins", 0)
+--- @usage block.getmetadata("coins", 0)
+--- @usage block.getmetadata("block name", "unnamed")
 function getmetadata(key, defaultValue)
 end
