@@ -26,7 +26,13 @@ accel = 50
 gravity = 1
 
 --- Affects how far can you see (zoom). Greater values decrease your view size.
-fov = 3
+fov = 1
+
+--- Player's current horizontal velocity. Ranges from -1 to 1.
+xvelocity = 0
+
+--- Player's current vertical velocity. Ranges from -1 to 1.
+yvelocity = 0
 
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
@@ -69,24 +75,31 @@ function safety()
 end
 
 --- Gives the player a laser gun item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeat(float), phasing(float)
+--- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float)
 --- @param settings The given laser gun item as an AS3 Object.
---- @usage player.givelaser(toobject{ammo=5,reload=4})
+--- @usage player.givelaser(toobject{ammo=100,reload=1,speed=50,range=0.5,phasing=10,recoil=0})
 function givelaser(settings)
 end
 
 --- Gives the player a sword item with specified settings.
 --- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float)
 --- @param settings The given sword item as an AS3 Object.
---- @usage player.givesword(toobject{ammo=5,reload=4})
+--- @usage player.givesword(toobject{ammo=20,reload=2,recoil=50})
 function givesword(settings)
 end
 
 --- Gives the player a rocket launcher item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeat(float), phasing(float)
+--- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)
 --- @param settings The given rocket launcher item as an AS3 Object.
---- @usage player.giverocket(toobject{ammo=5,reload=4})
+--- @usage player.giverocket(toobject{ammo=5,reload=4,speed=-20,range=50,recoil=0})
 function giverocket(settings)
+end
+
+--- Gives the player a bow item with specified settings.
+--- Fields: ammo(int), reload(int), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)
+--- @param settings The given bow item as an AS3 Object.
+--- @usage player.givebow(toobject{ammo=5,pullspeed=2,autofire=1,reload=0,rotation="-6,2",repeats=7})
+function givebow(settings)
 end
 
 --- Teleports the player to the given direction.
@@ -102,4 +115,15 @@ end
 --- @param amplifier (Number) Sets the speed amplifier of the rotation speed. For reference, Fez rotates at 10 amplifier.
 --- @usage player.rotate(90, 1.6)
 function rotate(value, amplifier)
+end
+
+--- Removes the item that the player is currently holding.
+function removeitem()
+end
+
+--- Plays a sound effect to the player.
+--- @tparam int id Id of the played sound effect. (0: jetpack, 1: level start, 2: sword, 3: lightning, 4: coin, 5: jump, 6: item block, 7: black hole, 8: rocket launcher, 9: shatter, 10: sad block, 11: laser gun hit, 12: ready, 13: explosion, 14: teleport, 15: match end, 16: shield, 17: shield extra, 18: bow draw, 19: water enter, 20: happy block, 21: speed burst end, 22: speed burst, 23: bump, 24: cheer, 25: laser gun shot, 26: ouch, 27: bouncy block, 28: bow fire, 29: water exit, 30: portable block, 31: superjump, 32: angel wings, 33: water effect, 34: water effect, 35: water effect, 36: water effect, 37: freeze ray, 38: snowball hit, 39: napalm)
+--- @tparam number volume Volume of the played sound effect.
+--- @usage player.playsound(6, 2)
+function playsound(id, volume)
 end
