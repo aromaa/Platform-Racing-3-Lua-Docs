@@ -10,10 +10,10 @@ paused = false
 --- Can the block be moved
 canmove = false
 
---- The x-coordinate of the block's position.
+--- The absolute x-position of the block.
 xpos = 0
 
---- The y-coordinate of the block's position.
+--- The absolute y-position of the block.
 ypos = 0
 
 --- Tries to move the block to a specified direction. Move delay and the option to move the player can be passed, too.
@@ -26,7 +26,7 @@ ypos = 0
 function move(direction, moveDelay, movePlayer)
 end
 
---- Teleports the block in the given direction. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
+--- Teleports the block to the given relative position. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
 --- @tparam int xpos The amount to move the block among the x-axis.
 --- @tparam int ypos The amount to move the block among the y-axis.
 --- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
@@ -36,9 +36,9 @@ end
 function teleportto(xpos, ypos, removecurrentblock, removetargetspot)
 end
 
---- Teleports the block to the given coordinates. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
---- @tparam int xpos The x-coordinate to teleport the block to.
---- @tparam int ypos The y-coordinate to teleport the block to.
+--- Teleports the block to the given absolute position. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
+--- @tparam int xpos The x-position to teleport the block to.
+--- @tparam int ypos The y-position to teleport the block to.
 --- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
 --- @tparam boolean removetargetspot If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
 --- @treturn boolean Returns whether the move was successful.
