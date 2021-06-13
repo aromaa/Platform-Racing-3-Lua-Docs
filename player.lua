@@ -107,7 +107,7 @@ end
 --- Gives the player a specified default item.
 --- @tparam string item The given item. Options are: "sword", "lasergun", "angelwings", "blackhole", "bow", "freezeray", "heart", "grenade", "jetpack", "lightning", "lightningcloud", "napalm", "portableblock", "portablemine", "rocketlauncher", "shield", "snowball", "speedburst", "superjump", "teleport", "superteleport"
 --- @usage player.giveitem("lasergun")
-function giveitem(settings)
+function giveitem(item)
 end
 
 --- Gives the player a laser gun item with specified settings.
@@ -185,7 +185,7 @@ function chill(amount)
 end
 
 --- Dyes the player's body parts for the rest of the match.
---- @tparam color The decimal color applied to the player's parts. By default 16777215.
+--- @tparam int color The decimal color applied to the player's parts. By default 16777215.
 --- @usage player.dye(255)
 function dye(color)
 end
