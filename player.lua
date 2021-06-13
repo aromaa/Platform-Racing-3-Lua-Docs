@@ -43,10 +43,10 @@ xpos = 0
 --- The absolute y-position of the player.
 ypos = 0
 
---- The absolute x-position of the player's safe spawnpoint.
+--- The absolute x-position of the player's respawn location.
 safex = 0
 
---- The absolute y-position of the player's safe spawnpoint.
+--- The absolute y-position of the player's respawn location.
 safey = 0
 
 --- Is the up arrow key or w currently pressed?
