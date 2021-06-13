@@ -37,16 +37,16 @@ xvelocity = 0
 --- Player's current vertical velocity. Ranges from -1 to 1.
 yvelocity = 0
 
---- The x-coordinate of the player's position.
+--- The absolute x-position of the player.
 xpos = 0
 
---- The y-coordinate of the player's position.
+--- The absolute y-position of the player.
 ypos = 0
 
---- The x-coordinate of the player's current safe spawning position.
+--- The absolute x-position of the player's safe spawnpoint.
 safex = 0
 
---- The y-coordinate of the player's current safe spawning position.
+--- The absolute y-position of the player's safe spawnpoint.
 safey = 0
 
 --- Is the up arrow key or w currently pressed?
