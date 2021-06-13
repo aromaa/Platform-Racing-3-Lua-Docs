@@ -9,6 +9,9 @@ team = "none"
 --- Player's current health. The player is killed if it goes to zero or below.
 health = 5
 
+--- Player's max health.
+maxhealth = 5
+
 --- Player's current rotation in degrees.
 --- Rotation can only be set to values dividable by 90 degrees.
 rotation = 0
@@ -33,6 +36,33 @@ xvelocity = 0
 
 --- Player's current vertical velocity. Ranges from -1 to 1.
 yvelocity = 0
+
+--- The absolute x-position of the player.
+xpos = 0
+
+--- The absolute y-position of the player.
+ypos = 0
+
+--- The absolute x-position of the player's respawn location.
+safex = 0
+
+--- The absolute y-position of the player's respawn location.
+safey = 0
+
+--- Is the up arrow key or w currently pressed?
+uppressed = false
+
+--- Is the down arrow key or s currently pressed?
+downpressed = false
+
+--- Is the left arrow key or a currently pressed?
+leftpressed = false
+
+--- Is the right arrow key or d currently pressed?
+rightpressed = false
+
+--- Is the spacebar currently pressed?
+spacepressed = false
 
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
@@ -74,32 +104,59 @@ end
 function safety()
 end
 
+--- Gives the player a specified default item.
+--- @tparam string item The given item. Options are: "sword", "lasergun", "angelwings", "blackhole", "bow", "freezeray", "heart", "grenade", "jetpack", "lightning", "lightningcloud", "napalm", "portableblock", "portablemine", "rocketlauncher", "shield", "snowball", "speedburst", "superjump", "teleport", "superteleport"
+--- @usage player.giveitem("lasergun")
+function giveitem(settings)
+end
+
 --- Gives the player a laser gun item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float)
+--- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float)
 --- @param settings The given laser gun item as an AS3 Object.
 --- @usage player.givelaser(toobject{ammo=100,reload=1,speed=50,range=0.5,phasing=10,recoil=0})
 function givelaser(settings)
 end
 
 --- Gives the player a sword item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float)
+--- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float)
 --- @param settings The given sword item as an AS3 Object.
 --- @usage player.givesword(toobject{ammo=20,reload=2,recoil=50})
 function givesword(settings)
 end
 
 --- Gives the player a rocket launcher item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)
+--- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)
 --- @param settings The given rocket launcher item as an AS3 Object.
 --- @usage player.giverocket(toobject{ammo=5,reload=4,speed=-20,range=50,recoil=0})
 function giverocket(settings)
 end
 
 --- Gives the player a bow item with specified settings.
---- Fields: ammo(int), reload(int), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)
+--- Fields: ammo(int), reload(float), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)
 --- @param settings The given bow item as an AS3 Object.
 --- @usage player.givebow(toobject{ammo=5,pullspeed=2,autofire=1,reload=0,rotation="-6,2",repeats=7})
 function givebow(settings)
+end
+
+--- Gives the player a grenade item with specified settings.
+--- Fields: ammo(int), reload(float), damage(int), knockback(float), recovery(float), blastdelay(int), throwforcex(float), throwforcey(float), hurtarea(int), blastdamage(int), blastrecovery(float), blastradius(int)
+--- @param settings The given grenade item as an AS3 Object.
+--- @usage player.givegrenade(toobject{ammo=1,reload=8,damage=1,knockback=10,recovery=25,blastdelay=95,throwforcex=1,throwforcey=1,hurtarea=120,blastdamage=1,blastrecovery=25,blastradius=1})
+function givegrenade(settings)
+end
+
+--- Gives the player a lightning cloud item with specified settings.
+--- Fields: damage(int), zaptime(int), extrazaptime(int), zaps(int), recovery(float), passcooldown(int)
+--- @param settings The given lightning cloud item as an AS3 Object.
+--- @usage player.givelightningcloud(toobject{damage=1,zaptime=270,extrazaptime=270,zaps=1,recovery=25,passcooldown=27})
+function givelightningcloud(settings)
+end
+
+--- Gives the player a black hole item with specified settings.
+--- Fields: ammo(int), reload(float), duration(int), strength(float), speedx(int), speedy(int).
+--- @param settings The given black hole item as an AS3 Object.
+--- @usage player.giveblackhole(toobject{ammo=1,reload=8,duration=9900,strength=1,speedx=0,speedy=0})
+function giveblackhole(settings)
 end
 
 --- Teleports the player to the given direction.
@@ -119,6 +176,18 @@ end
 
 --- Removes the item that the player is currently holding.
 function removeitem()
+end
+
+--- Chills the player, causing massive reduction in stats until the effect wears off.
+--- @tparam number amount The amount of chill applied in seconds. By default 6.
+--- @usage player.chill(6)
+function chill(amount)
+end
+
+--- Dyes the player's body parts for the rest of the match.
+--- @tparam color The decimal color applied to the player's parts. By default 16777215.
+--- @usage player.dye(255)
+function dye(color)
 end
 
 --- Plays a sound effect to the player.
