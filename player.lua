@@ -6,6 +6,9 @@
 --- Teammates can't directly hurt each other unless there are players left only in that team.
 team = "none"
 
+--- The event handler for player tick.
+tick = nil
+
 --- Player's current health. The player is killed if it goes to zero or below.
 health = 5
 
@@ -37,10 +40,22 @@ xvelocity = 0
 --- Player's current vertical velocity. Ranges from -1 to 1.
 yvelocity = 0
 
+--- The current horizontal momentum of the player.
+xmove = 0
+
+--- The current vertical momentum of the player.
+ymove = 0
+
 --- The absolute x-position of the player.
-xpos = 0
+x = 0
 
 --- The absolute y-position of the player.
+y = 0
+
+--- The next absolute x-position of the player.
+xpos = 0
+
+--- The next absolute y-position of the player.
 ypos = 0
 
 --- The absolute x-position of the player's respawn location.
