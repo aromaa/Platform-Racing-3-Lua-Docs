@@ -64,6 +64,25 @@ safex = 0
 --- The absolute y-position of the player's respawn location.
 safey = 0
 
+--- The absolute x-position of the camera (top left corner; not affected by player.fov).
+camerax = 0
+
+--- The absolute y-position of the camera (top left corner; not affected by player.fov).
+cameray = 0
+
+--- Defines how fast the camera does follow the player. Ranges from 0 to 1. 0 means the camera will not move at all.
+--- By default 0.25.
+stiffness = 0.25
+
+--- Player's array of hats. Read-only.
+hat = nil
+
+--- Is the minimap currently visible?
+minimap = false
+
+--- Does the teleport effect appear when the player teleports?
+teleStealth = true
+
 --- Is the up arrow key or w currently pressed?
 uppressed = false
 
@@ -78,6 +97,13 @@ rightpressed = false
 
 --- Is the spacebar currently pressed?
 spacepressed = false
+
+--- Is the specified key currently pressed?
+--- @tparam int keycode The specified key that is being checked. A list of available keycodes is at http://www.makeflashgames.com/resources/keycodes.php
+--- @return Returns true if pressed, otherwise false.
+--- @usage local Zpressed = tolua(player.keypressed(90))
+function keypressed(keycode)
+end
 
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
@@ -210,4 +236,11 @@ end
 --- @tparam number volume Volume of the played sound effect.
 --- @usage player.playsound(6, 2)
 function playsound(id, volume)
+end
+
+--- Sends a gameEvent to every player in the match. Used with game.gameEvent.
+--- @tparam data Sent event data as an AS3 object.
+--- @tparam boolean sendToSelf Posts the gameEvent to the sender as well if true.
+--- @usage player.postGameEvent(toobject{type="damageall", message="Everyone took 1 damage!", damage=1}, true)
+function postGameEvent(data, sendToSelf)
 end
