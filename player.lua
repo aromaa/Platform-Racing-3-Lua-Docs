@@ -79,10 +79,10 @@ stiffness = 0.25
 hat = nil
 
 --- Is the minimap currently visible?
-minimap = false
+minimap = true
 
 --- Does the teleport effect appear when the player teleports?
-teleStealth = true
+teleStealth = false
 
 --- The remaining duration, in milliseconds, of the player's invulnerability received by recovering from damage.
 recoverytimer = 0
@@ -111,6 +111,7 @@ spacepressed = false
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
+--- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
 --- @usage player.hurt(2, 0.15)
 function hurt(damage, vel, recovery)
 end
