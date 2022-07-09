@@ -308,7 +308,7 @@ function enablesuperjump()
 end
 
 --- Is the specified key currently pressed?
---- @tparam int keycode The specified key that is being checked. A list of available keycodes is at https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/ui/Keyboard.html
+--- @tparam int keycode The specified key that is being checked.
 --- @return Returns true if pressed, otherwise false.
 --- @usage local Zpressed = tolua(player.keypressed(90))
 function keypressed(keycode)
