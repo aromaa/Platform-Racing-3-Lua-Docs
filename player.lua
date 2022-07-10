@@ -7,6 +7,7 @@
 team = "none"
 
 --- The event handler for player tick.
+--- @see eventlistener
 tick = nil
 
 --- Player's current health. The player is killed if it goes to zero or below.
@@ -64,26 +65,55 @@ safex = 0
 --- The absolute y-position of the player's respawn location.
 safey = 0
 
---- Is the up arrow key or w currently pressed?
+--- The absolute x-position of the camera (top left corner; not affected by player.fov).
+camerax = 0
+
+--- The absolute y-position of the camera (top left corner; not affected by player.fov).
+cameray = 0
+
+--- Defines how fast the camera does follow the player. Ranges from 0 to 1. 0 means the camera will not move at all.
+--- By default 0.25.
+stiffness = 0.25
+
+--- Player's array of hats. Read-only.
+hat = nil
+
+--- Is the minimap currently visible?
+minimap = true
+
+--- Does the teleport effect appear when the player teleports?
+teleStealth = false
+
+--- The remaining duration, in milliseconds, of the player's invulnerability received by recovering from damage.
+recoverytimer = 0
+
+--- The remaining duration, in milliseconds, of the player's stun received by damage.
+hurttimer = 0
+
+--- The remaining duration, in milliseconds, of the player's chill.
+frost = 0
+
+--- Is the up arrow key or w currently pressed? Read-only.
 uppressed = false
 
---- Is the down arrow key or s currently pressed?
+--- Is the down arrow key or s currently pressed? Read-only.
 downpressed = false
 
---- Is the left arrow key or a currently pressed?
+--- Is the left arrow key or a currently pressed? Read-only.
 leftpressed = false
 
---- Is the right arrow key or d currently pressed?
+--- Is the right arrow key or d currently pressed? Read-only.
 rightpressed = false
 
---- Is the spacebar currently pressed?
+--- Is the spacebar currently pressed? Read-only.
 spacepressed = false
 
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
+--- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
 --- @usage player.hurt(2, 0.15)
-function hurt(damage, vel)
+function hurt(damage, vel, recovery)
 end
 
 --- Sets a metadata with a specified key-value pair to the player.
@@ -126,7 +156,10 @@ function giveitem(item)
 end
 
 --- Gives the player a laser gun item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float)
+--- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float), transferhit(int), transferfade(int)
+--- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
+--- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
+--- transferhit and transferfade are active when set to 1
 --- @param settings The given laser gun item as an AS3 Object.
 --- @usage player.givelaser(toobject{ammo=100,reload=1,speed=50,range=0.5,phasing=10,recoil=0})
 function givelaser(settings)
@@ -141,6 +174,8 @@ end
 
 --- Gives the player a rocket launcher item with specified settings.
 --- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)
+--- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
+--- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
 --- @param settings The given rocket launcher item as an AS3 Object.
 --- @usage player.giverocket(toobject{ammo=5,reload=4,speed=-20,range=50,recoil=0})
 function giverocket(settings)
@@ -148,6 +183,8 @@ end
 
 --- Gives the player a bow item with specified settings.
 --- Fields: ammo(int), reload(float), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)
+--- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
+--- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
 --- @param settings The given bow item as an AS3 Object.
 --- @usage player.givebow(toobject{ammo=5,pullspeed=2,autofire=1,reload=0,rotation="-6,2",repeats=7})
 function givebow(settings)
@@ -210,4 +247,76 @@ end
 --- @tparam number volume Volume of the played sound effect.
 --- @usage player.playsound(6, 2)
 function playsound(id, volume)
+end
+
+--- Disables the player's up input for a duration.
+--- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 27)
+function disableup(times)
+end
+
+--- Disables the player's down input for a duration.
+--- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
+--- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 27)
+function disabledown(times)
+end
+
+--- Disables the player's left input for a duration.
+--- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 27)
+function disableleft(times)
+end
+
+--- Disables the player's right input for a duration.
+--- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 27)
+function disableright(times)
+end
+
+--- Forces the player's up input to be pressed for a duration.
+--- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 27)
+function autoup(times)
+end
+
+--- Forces the player's down input to be pressed for a duration.
+--- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
+--- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 27)
+function autodown(times)
+end
+
+--- Forces the player's left input to be pressed for a duration.
+--- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 27)
+function autoleft(times)
+end
+
+--- Forces the player's right input to be pressed for a duration.
+--- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
+--- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 27)
+function autoright(times)
+end
+
+--- Disables the player's superjump until re-enabled.
+--- @usage player.disablesuperjump()
+function disablesuperjump()
+end
+
+--- Enables the player's superjump.
+--- @usage player.enablesuperjump()
+function enablesuperjump()
+end
+
+--- Is the specified key currently pressed?
+--- @tparam int keycode The specified key that is being checked.
+--- @return Returns true if pressed, otherwise false.
+--- @usage local Zpressed = tolua(player.keypressed(keys.Z))
+function keypressed(keycode)
+end
+
+--- Sends a gameEvent to every player in the match. Used with game.gameEvent.
+--- @param data The event data to send.
+--- @tparam boolean sendToSelf If true, the gameEvent will also be sent to the sender. By default false.
+--- @usage player.postGameEvent(toobject{type="damageall", message="Everyone took 1 damage!", damage=1}, true)
+function postGameEvent(data, sendToSelf)
 end

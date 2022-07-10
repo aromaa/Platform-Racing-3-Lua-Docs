@@ -1,14 +1,19 @@
 --- Game related variables and functions.
 ...
 
+--- The current level the game is played on. Read-only.
+level = nil
+
+--- The amount of players in the game. Read-only.
+playersCount = 1
+
 --- The event handler for game start.
+--- @see eventlistener
 start = nil
 
 --- The event handler for game tick.
+--- @see eventlistener
 tick = nil
-
---- The current level the game is played on.
-level = nil
 
 --- The handler for gameEvents sent via player.postGameEvent.
 --- Provides a gameEvent, from which you can get data and source (the player-sender).
@@ -28,10 +33,4 @@ playerRemoved = nil
 --- @return Returns the local/remote player object.
 --- @usage game.getPlayer(1)
 function getPlayer(id)
-end
-
---- Gets the player count.
---- @return Returns the number of players in the match.
---- @usage local playerAmount = tolua(game.getPlayersCount())
-function getPlayersCount()
 end

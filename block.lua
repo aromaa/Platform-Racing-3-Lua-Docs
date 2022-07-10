@@ -55,8 +55,18 @@ end
 --- Makes the block explode, damaging the player in the process.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
+--- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
 --- @usage block.explode(3, 1.1)
-function explode(damage, vel)
+function explode(damage, vel, recovery)
+end
+
+--- Makes the block hurt the player by a specific amount and with a specified velocity.
+--- @tparam int damage The amount of damage done to the player. By default 1.
+--- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
+--- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
+--- @tparam bool checkRecovery Prevents pushing the player if they have invulnerability received by recovering from damage. By default true.
+--- @usage block.hurtplayer(3, 1.1)
+function hurtplayer(damage, vel, recovery, checkRecovery)
 end
 
 --- Calculates crumble damage to the block depending on the player's velocity.
