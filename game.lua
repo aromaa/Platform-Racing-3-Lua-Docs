@@ -8,7 +8,7 @@ level = nil
 playersCount = 1
 
 --- The event handler for game start.
---- @usage game.start.addListener(function() player.removeitem() player.chat("bye bye halo :)") end)
+--- @see eventlistener
 start = nil
 
 --- The event handler for game tick.
