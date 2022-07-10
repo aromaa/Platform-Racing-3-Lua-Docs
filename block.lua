@@ -65,7 +65,7 @@ end
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
 --- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
 --- @tparam bool checkRecovery Prevents pushing the player if they have invulnerability received by recovering from damage. By default true.
---- @usage block.hurt(3, 1.1)
+--- @usage block.hurtplayer(3, 1.1)
 function hurtplayer(damage, vel, recovery, checkRecovery)
 end
 
