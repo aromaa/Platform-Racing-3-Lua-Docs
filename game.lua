@@ -12,7 +12,7 @@ playersCount = 1
 start = nil
 
 --- The event handler for game tick.
---- @usage game.tick.addListener(function() gameTicks = (gameTicks or 0) + 1 player.chat("The game has been running for " .. tostring(gameTicks) .. " ticks!") end)
+--- @see eventlistener
 tick = nil
 
 --- The handler for gameEvents sent via player.postGameEvent.

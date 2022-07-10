@@ -7,7 +7,7 @@
 team = "none"
 
 --- The event handler for player tick.
---- @usage player.tick.addListener(function() playerTicks = (playerTicks or 0) + 1 player.chat("You have been alive for " .. tostring(playerTicks) .. " ticks!") end)
+--- @see eventlistener
 tick = nil
 
 --- Player's current health. The player is killed if it goes to zero or below.
