@@ -75,7 +75,7 @@ cameray = 0
 --- By default 0.25.
 stiffness = 0.25
 
---- Player's array of hats. Read-only.
+--- An AS3 array of the player's hats. Read-only.
 hat = nil
 
 --- Is the minimap currently visible?
@@ -156,56 +156,56 @@ function giveitem(item)
 end
 
 --- Gives the player a laser gun item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float), transferhit(int), transferfade(int)
---- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
---- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
---- transferhit and transferfade are active when set to 1
+--- <p>Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), range(float), rotation(String), repeats(float), phasing(float), transferhit(int), transferfade(int)</p>
+--- <p>rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)</p>
+--- <p>rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0</p>
+--- <p>transferhit and transferfade are active when set to 1</p>
 --- @param settings The given laser gun item as an AS3 Object.
 --- @usage player.givelaser(toobject{ammo=100,reload=1,speed=50,range=0.5,phasing=10,recoil=0})
 function givelaser(settings)
 end
 
 --- Gives the player a sword item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float)
+--- <p>Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float)</p>
 --- @param settings The given sword item as an AS3 Object.
 --- @usage player.givesword(toobject{ammo=20,reload=2,recoil=50})
 function givesword(settings)
 end
 
 --- Gives the player a rocket launcher item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)
---- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
---- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
+--- <p>Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float), speed(float), accel(float), maxVel(float), range(float), rotation(String), repeats(float), phasing(float)</p>
+--- <p>rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)</p>
+--- <p>rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0</p>
 --- @param settings The given rocket launcher item as an AS3 Object.
 --- @usage player.giverocket(toobject{ammo=5,reload=4,speed=-20,range=50,recoil=0})
 function giverocket(settings)
 end
 
 --- Gives the player a bow item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)
---- rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)
---- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
+--- <p>Fields: ammo(int), reload(float), damage(int), knockback(float), sap(int), recovery(float), range(float), phasing(int), rotation(String), repeats(int), pullspeed(int), maxforce(int), autofire(int, 0 or 1)</p>
+--- <p>rotation takes the format "float1,float2", where float1 is the first bullet's rotation in degrees and float2 is the number of degrees incremented to each subsequent bullet's rotation (for multi-shots created with the repeats field)</p>
+--- <p>rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 </p>
 --- @param settings The given bow item as an AS3 Object.
 --- @usage player.givebow(toobject{ammo=5,pullspeed=2,autofire=1,reload=0,rotation="-6,2",repeats=7})
 function givebow(settings)
 end
 
 --- Gives the player a grenade item with specified settings.
---- Fields: ammo(int), reload(float), damage(int), knockback(float), recovery(float), blastdelay(int), throwforcex(float), throwforcey(float), hurtarea(int), blastdamage(int), blastrecovery(float), blastradius(int)
+--- <p>Fields: ammo(int), reload(float), damage(int), knockback(float), recovery(float), blastdelay(int), throwforcex(float), throwforcey(float), hurtarea(int), blastdamage(int), blastrecovery(float), blastradius(int)</p>
 --- @param settings The given grenade item as an AS3 Object.
 --- @usage player.givegrenade(toobject{ammo=1,reload=8,damage=1,knockback=10,recovery=25,blastdelay=95,throwforcex=1,throwforcey=1,hurtarea=120,blastdamage=1,blastrecovery=25,blastradius=1})
 function givegrenade(settings)
 end
 
 --- Gives the player a lightning cloud item with specified settings.
---- Fields: damage(int), zaptime(int), extrazaptime(int), zaps(int), recovery(float), passcooldown(int)
+--- <p>Fields: damage(int), zaptime(int), extrazaptime(int), zaps(int), recovery(float), passcooldown(int)</p>
 --- @param settings The given lightning cloud item as an AS3 Object.
 --- @usage player.givelightningcloud(toobject{damage=1,zaptime=270,extrazaptime=270,zaps=1,recovery=25,passcooldown=27})
 function givelightningcloud(settings)
 end
 
 --- Gives the player a black hole item with specified settings.
---- Fields: ammo(int), reload(float), duration(int), strength(float), speedx(int), speedy(int).
+--- <p>Fields: ammo(int), reload(float), duration(int), strength(float), speedx(int), speedy(int)</p>
 --- @param settings The given black hole item as an AS3 Object.
 --- @usage player.giveblackhole(toobject{ammo=1,reload=8,duration=9900,strength=1,speedx=0,speedy=0})
 function giveblackhole(settings)
@@ -243,7 +243,8 @@ function dye(color)
 end
 
 --- Plays a sound effect to the player.
---- @tparam int id Id of the played sound effect. (0: jetpack, 1: level start, 2: sword, 3: lightning, 4: coin, 5: jump, 6: item block, 7: black hole, 8: rocket launcher, 9: shatter, 10: sad block, 11: laser gun hit, 12: ready, 13: explosion, 14: teleport, 15: match end, 16: shield, 17: shield extra, 18: bow draw, 19: water enter, 20: happy block, 21: speed burst end, 22: speed burst, 23: bump, 24: cheer, 25: laser gun shot, 26: ouch, 27: bouncy block, 28: bow fire, 29: water exit, 30: portable block, 31: superjump, 32: angel wings, 33: water effect, 34: water effect, 35: water effect, 36: water effect, 37: freeze ray, 38: snowball hit, 39: napalm)
+--- @tparam int id Id of the played sound effect.
+--- <p>(0: jetpack, 1: level start, 2: sword, 3: lightning, 4: coin, 5: jump, 6: item block, 7: black hole, 8: rocket launcher, 9: shatter, 10: sad block, 11: laser gun hit, 12: ready, 13: explosion, 14: teleport, 15: match end, 16: shield, 17: shield extra, 18: bow draw, 19: water enter, 20: happy block, 21: speed burst end, 22: speed burst, 23: bump, 24: cheer, 25: laser gun shot, 26: ouch, 27: bouncy block, 28: bow fire, 29: water exit, 30: portable block, 31: superjump, 32: angel wings, 33: water effect, 34: water effect, 35: water effect, 36: water effect, 37: freeze ray, 38: snowball hit, 39: napalm, 40: heart, 41: C3 piano note, 42: D3 piano note, 43: E3 piano note, 44: F3 piano note, 45: G3 piano note, 46: A4 piano note, 47: B4 piano note, 48: C4 piano note)</p>
 --- @tparam number volume Volume of the played sound effect.
 --- @usage player.playsound(6, 2)
 function playsound(id, volume)
