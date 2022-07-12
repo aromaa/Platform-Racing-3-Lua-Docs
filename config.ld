@@ -5,7 +5,6 @@ title = 'PR3R Lua Documentation'
 style = '!fixed'
 template = true
 use_markdown_titles = true
-package = 'pl'
 format = 'discount'
 sort_modules=true
 kind_names={topic='Manual',module='Libraries'}
