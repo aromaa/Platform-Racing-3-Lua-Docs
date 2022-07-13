@@ -21,6 +21,14 @@ end
 function toarray(value)
 end
 
+--- Converts an array of positions (tables with an x value and a y value) into a vararg.
+--- @param value The value to convert.
+--- @return The vararg.
+--- @usage block.bulkteleportto(false, true, tovararg({{x = 0, y = -7}, {x = 0, y = -8}, {x = 1, y = -8}, {x = 1, y = -7}}))
+--- @see block.bulkteleportto
+function tovararg(value)
+end
+
 --- List of keycodes.
 keys = {
 	NONE = 0, -- No key pressed.

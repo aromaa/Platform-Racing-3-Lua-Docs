@@ -7,4 +7,3 @@ template = true
 use_markdown_titles = true
 format = 'discount'
 sort_modules=true
-kind_names={topic='Manual',module='Libraries'}

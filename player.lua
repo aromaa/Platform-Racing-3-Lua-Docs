@@ -327,6 +327,7 @@ end
 --- @tparam int keycode The specified key that is being checked.
 --- @return Returns true if pressed, otherwise false.
 --- @usage local Zpressed = tolua(player.keypressed(keys.Z))
+--- @see utils.keys
 function keypressed(keycode)
 end
 
