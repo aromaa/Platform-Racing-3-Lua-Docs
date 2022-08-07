@@ -320,3 +320,21 @@ end
 --- @usage player.postGameEvent(toobject{type="damageall", message="Everyone took 1 damage!", damage=1}, true)
 function postGameEvent(data, sendToSelf)
 end
+
+--- Spawns an evil alien (locally) with given random seed and changeable properties. Returns the spawned evil alien instance which can be used for later.
+--- Fields: x(float), y(float), reload(int), damage(int), knockback(float), recovery(float), speed(float), range(float), maxVel(float), accel(float), rotateMultiplier(float), destroyOnHit(int, 0 or 1), alienSpeed(float), angle(float), shots(int), shotsLeft(int)
+--- rotateMultiplier affects bullets' rotation speed
+--- destroyOnHit makes bullets be destroyed upon hitting a block, 1 by default
+--- When shotsleft reaches 0, it is set to a random value multiplied by shots, and the alien changes its shoot angle
+--- @tparam number randomseed Random seed that will be used by the alien.
+--- @param vars Evil alien properties as an AS3 object.
+--- @usage local evilAlien = player.spawnAlien(123456789, toobject{x=tolua(player.x), y=tolua(player.y), reload=20, damage=2, alienSpeed=0.2})
+function spawnAlien(randomseed, vars)
+end
+
+--- Sets chosen properties of an evil alien instance returned by spawnAlien.
+--- @param alien Evil alien instance.
+--- @param vars Evil alien properties as an AS3 object.
+--- @usage player.setAlien(evilAlien, toobject{x=tolua(player.x), y=tolua(player.y) - 4, alienSpeed=3, destroyOnHit=0, angle=270})
+function setAlien(alien, vars)
+end
