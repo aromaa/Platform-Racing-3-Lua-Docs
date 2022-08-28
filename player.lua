@@ -267,50 +267,62 @@ end
 
 --- Disables the player's up input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.disableup(durationInSeconds * 30)
 function disableup(times)
 end
 
 --- Disables the player's down input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.disabledown(durationInSeconds * 30)
 function disabledown(times)
 end
 
 --- Disables the player's left input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.disableleft(durationInSeconds * 30)
 function disableleft(times)
 end
 
 --- Disables the player's right input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.disableright(durationInSeconds * 30)
 function disableright(times)
+end
+
+--- Disables the player's spacebar input for a duration.
+--- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
+--- @usage local durationInSeconds = 5 player.disablespace(durationInSeconds * 30)
+function disablespace(times)
 end
 
 --- Forces the player's up input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 30)
 function autoup(times)
 end
 
 --- Forces the player's down input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 30)
 function autodown(times)
 end
 
 --- Forces the player's left input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 30)
 function autoleft(times)
 end
 
 --- Forces the player's right input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 27)
+--- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 30)
 function autoright(times)
+end
+
+--- Forces the player's spacebar input to be pressed for a duration.
+--- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
+--- @usage local durationInSeconds = 5 player.autospace(durationInSeconds * 30)
+function autospace(times)
 end
 
 --- Disables the player's superjump until re-enabled.
