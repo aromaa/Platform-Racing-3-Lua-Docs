@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=$(ldoc.doc_charset)"/>
 <head>
-    <title>$(ldoc.title)</title>
+    <title>PR3R Lua Documentation</title>
     <link rel="stylesheet" href="$(ldoc.css)" type="text/css" />
 # if ldoc.custom_css then -- add custom CSS file if configured.
     <link rel="stylesheet" href="$(ldoc.custom_css)" type="text/css" />
@@ -33,7 +33,7 @@
 
 <div id="navigation">
 <br/>
-<h1>$(ldoc.project)</h1>
+<h1>PR3R Lua</h1>
 
 <ul>
 # if not ldoc.single and module then -- reference back to project index
@@ -286,9 +286,7 @@
 # if ldoc.description then
   <h2>$(M(ldoc.description,nil))</h2>
 # end
-# if ldoc.full_description then
-  <p>$(M(ldoc.full_description,nil))</p>
-# end
+<p>Platform Racing 3 is two-dimensional online racing game. Create your own levels and blocks, or play levels created by other players! Feature rich tools to make your vision come true! Draw amazing art or create unique consepts using different combinations of block types!</p>
 
 # for kind, mods in ldoc.kinds() do
 <h2>$(kind)</h2>
