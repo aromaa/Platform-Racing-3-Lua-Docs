@@ -93,6 +93,20 @@ hurttimer = 0
 --- The remaining duration, in milliseconds, of the player's chill.
 frost = 0
 
+--- The decimal color value of the player's outline. Set to a negative number to disable outline.
+outline = -1
+
+--- The thickness of the outline.
+--- By default 10.
+outlinethickness = 10
+
+--- The decimal color value of the player's dye. Set to a negative number to disable.
+paint = -1
+
+--- The opaqueness of the player. Ranges from 0 to 1. 0 means fully transparent, 1 means fully opaque.
+--- By default 1.
+alpha = 1
+
 --- Is the up arrow key or w currently pressed? Read-only.
 uppressed = false
 
@@ -244,16 +258,26 @@ end
 function removeitem()
 end
 
---- Chills the player, causing massive reduction in stats until the effect wears off.
+--- [DEPRECATED] Chills the player, causing massive reduction in stats until the effect wears off.
 --- @tparam number amount The amount of chill applied in seconds. By default 6.
 --- @usage player.chill(6)
+--- @see player.frost
 function chill(amount)
 end
 
---- Dyes the player's body parts for the rest of the match.
+--- [DEPRECATED] Dyes the player's body parts for the rest of the match.
 --- @tparam int color The decimal color applied to the player's parts. By default 16777215.
 --- @usage player.dye(255)
+--- @see player.paint
 function dye(color)
+end
+
+--- Tints the player's body parts with a glow effect for a duration.
+--- @tparam number red The amount of red in the glow effect. Ranges from 0 to 1. By default 1.
+--- @tparam number green The amount of green in the glow effect. Ranges from 0 to 1. By default 1.
+--- @tparam number blue The amount of blue in the glow effect. Ranges from 0 to 1. By default 1.
+--- @tparam int duration The duration (in ticks) of the glow effect. By default 60.
+function tint(red, green, blue, duration)
 end
 
 --- Plays a sound effect to the player.
@@ -267,61 +291,71 @@ end
 
 --- Disables the player's up input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.disableup(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.disableup(durationInSeconds * 30)
 function disableup(times)
 end
 
 --- Disables the player's down input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.disabledown(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.disabledown(durationInSeconds * 30)
 function disabledown(times)
 end
 
 --- Disables the player's left input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.disableleft(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.disableleft(durationInSeconds * 30)
 function disableleft(times)
 end
 
 --- Disables the player's right input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.disableright(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.disableright(durationInSeconds * 30)
 function disableright(times)
 end
 
 --- Disables the player's spacebar input for a duration.
 --- @tparam int times The amount of ticks for the input to be disabled. By default 999999.
---- @usage local durationInSeconds = 5 player.disablespace(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.disablespace(durationInSeconds * 30)
 function disablespace(times)
 end
 
 --- Forces the player's up input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoup(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.autoup(durationInSeconds * 30)
 function autoup(times)
 end
 
 --- Forces the player's down input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autodown(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.autodown(durationInSeconds * 30)
 function autodown(times)
 end
 
 --- Forces the player's left input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoleft(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.autoleft(durationInSeconds * 30)
 function autoleft(times)
 end
 
 --- Forces the player's right input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autoright(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.autoright(durationInSeconds * 30)
 function autoright(times)
 end
 
 --- Forces the player's spacebar input to be pressed for a duration.
 --- @tparam int times The amount of ticks for the input to be pressed. By default 999999.
---- @usage local durationInSeconds = 5 player.autospace(durationInSeconds * 30)
+--- @usage local durationInSeconds = 5
+----player.autospace(durationInSeconds * 30)
 function autospace(times)
 end
 
