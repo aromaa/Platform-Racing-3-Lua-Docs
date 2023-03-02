@@ -33,7 +33,9 @@ jobs:
       - name: Isolate LDoc source
         run: |
             mkdir source/
-            cp ./ source/
+            for f in ./* ; do
+                cp "$f" "source/$f"
+            done
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Setup Lua
