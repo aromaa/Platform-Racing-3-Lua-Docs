@@ -68,17 +68,18 @@ jobs:
               --directory "out/" \
               -cvf "$RUNNER_TEMP/artifact.tar" \
               .
-      - name: Upload artifact (TAR)
-        uses: actions/upload-artifact@main
-        with:
-            name: 'LDOC_tar'
-            path: ${{ runner.temp }}/artifact.tar
-            retention-days: 7
       - name: Upload artifact (ZIP)
         uses: actions/upload-artifact@main
         with:
             name: 'LDOC_zip'
             path: 'out/'
+            retention-days: 7
+      - name: Upload artifact (TAR)
+        if: ${{ inputs.deploy_page }} 
+        uses: actions/upload-artifact@main
+        with:
+            name: 'LDOC_tar'
+            path: ${{ runner.temp }}/artifact.tar
             retention-days: 7
     
   # Optional page deployment job
