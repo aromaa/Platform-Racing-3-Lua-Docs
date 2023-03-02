@@ -2,9 +2,8 @@
 name: Deploy LDoc to Artifact (Optional Pages)
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes
   push:
-    branches: [$default-branch]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,7 +48,7 @@ jobs:
             luarocks install penlight
             luarocks install ldoc
       - name: Run LDoc
-        run: ldoc "${{ runner.temp }}source/" --template "${{ runner.temp }}/source/" --format="markdown" -d "${{ runner.temp }}/LDOC"
+        run: ldoc "${{ runner.temp }}/source/" --template "${{ runner.temp }}/source/" --format="markdown" -d "${{ runner.temp }}/LDOC"
       - name: Upload Artifact (ZIP)
         uses: actions/upload-artifact@main
         with:
