@@ -16,6 +16,28 @@ xpos = 0
 --- The absolute y-position of the block.
 ypos = 0
 
+--- The event handler for block break. This event may be cancelled to prevent the block from breaking.
+--- 
+--- Provides the broken block, the side from which it was broken, and the reason;
+--- the reason may be either a Projectile, a Player (which may also be a LocalPlayer), or nil
+--- @see eventlistener
+--- @see utils.instanceof
+--- @usage game.level.getBlockAt(5, 7).onBreak.addListener(function(event)
+----    event.cancelled = true --Prevents the block from breaking
+----    
+----    local block = tolua(event.block)
+----    local side = tolua(event.side)
+----    local reason = tolua(event.reason)
+----    
+----    if tolua(instanceof(reason, Projectile)) then --Checks if an item was used to break the block
+----        local shooter = tolua(reason.shooter)
+----        if tolua(instanceof(shooter, LocalPlayer)) then --Checks if the shooter is the local player
+----            shooter.hurt()
+----        end
+----    end
+----end)
+onBreak = nil
+
 --- Tries to move the block to a specified direction. Move delay and the option to move the player can be passed, too.
 --- @tparam string direction The direction to move the block to.
 --- @tparam number moveDelay The delay of how long it takes to the block to be able to be moved again. By default 100 (ms).

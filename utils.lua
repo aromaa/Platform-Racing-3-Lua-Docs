@@ -1,5 +1,23 @@
---- Helper functions
+--- Helper functions and variables
 ...
+
+--- The Projectile class.
+--- @see projectile
+--- @see utils.instanceof
+--- @see block.onBreak
+Projectile = nil
+
+--- The Player class.
+--- @see remoteplayer
+--- @see utils.instanceof
+--- @see game.getPlayer
+Player = nil
+
+--- The LocalPlayer class.
+--- All instances of this class also belong to Player class.
+--- @see player
+--- @see utils.instanceof
+LocalPlayer = nil
 
 --- Converts game value to Lua. This allows the modification of given value.
 --- @param value The value to convert.
@@ -27,6 +45,16 @@ end
 --- @usage block.bulkteleportto(false, true, tovararg({{x = 0, y = -7}, {x = 0, y = -8}, {x = 1, y = -8}, {x = 1, y = -7}}))
 --- @see block.bulkteleportto
 function tovararg(value)
+end
+
+--- Checks if an object is an instance of a class.
+--- @param object The object. tolua must be used for this parameter
+--- @param class The class.
+--- @treturn boolean Returns whether the object is an instance of the class.
+--- @see utils.Projectile
+--- @see utils.Player
+--- @usage isProjectile = tolua(instanceof(tolua(event.reason), Projectile))
+function instanceof(object, class)
 end
 
 --- List of keycodes.

@@ -1,8 +1,8 @@
---- A lock that prevents its associated event from completing until all locks are disposed of.
---- Currently, only drawing locks obtained from game.init exist.
+--- Lock related functions and variables.
 ...
 
---- Disposes the lock, allowing the associated event to complete if no locks remain.
+--- Disposes the lock, allowing its associated event to complete.
+--- If the event has multiple locks, all locks must be disposed before the event may complete.
 --- @see game.init
 function dispose()
 end

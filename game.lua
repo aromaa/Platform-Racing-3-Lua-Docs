@@ -5,11 +5,12 @@
 level = nil
 
 --- The amount of players in the game. Read-only.
+--- @see game.getPlayer
 playersCount = 1
 
---- The event handler for game init.
---- Provides an initEvent, from which you can acquire a drawing lock.
---- The drawing lock will prevent the game from considering the level drawing to be complete until all existing drawing locks are disposed of.
+--- The event handler for game init. A drawing lock may be obtained from this event.
+---
+--- The drawing lock will prevent drawing completion until all existing drawing locks are disposed of.
 --- @usage local lock = nil
 --- game.init.addListener(function(event)
 ----    lock = event.acquireLock()
@@ -34,7 +35,9 @@ start = nil
 tick = nil
 
 --- The handler for gameEvents sent via player.postGameEvent.
+---
 --- Provides a gameEvent, from which you can get data and source (the player-sender).
+---
 --- tolua method must be used for every variable you get from the gameEvent.
 --- @usage game.gameEvent.addListener(function(event)
 ----    local data = tolua(event.data)
@@ -51,17 +54,23 @@ gameEvent = nil
 playerRemoved = nil
 
 --- Gets a player object by their index.
---- Remote player objects' variables are read-only. Exception is metadata, which can be both set and get.
---- Note: remote metadata is still local only.
---- @tparam int id Index of the player.
+--- 
+--- Remote player objects' variables are read-only. Exceptions are metadata and visual effects, which can be both set and get.
+--- Note: remote metadata and visual effects are still local only.
+--- @tparam int index Index of the player.
 --- @return Returns the local/remote player object.
 --- @usage game.getPlayer(1)
-function getPlayer(id)
+--- @see game.playersCount
+--- @see remoteplayer
+function getPlayer(index)
 end
 
 --- Requests the player's saved userdata for the level from the server.
---- This is an asynchronous method; it will not pause the script while the request is processing. Instead, it will later run the given callback function once the request has completed or failed.
 --- Provides the userdata or an error message.
+---
+--- This is an asynchronous method; it will not pause the script while the request is processing.
+--- Instead, it will later run the given callback function once the request has completed or failed.
+---
 --- tolua method must be used for every variable you get from the userdata, as well as for the error message.
 --- @tparam function callback The function that will be called once the request has completed or failed.
 --- @usage game.requestUserData(function(data, error)
@@ -78,7 +87,10 @@ function requestUserData(callback)
 end
 
 --- Requests to save the player's userdata for the level onto the server.
---- This is an asynchronous method; it will not pause the script while the request is processing. Instead, it will later run the given callback function once the request has completed or failed.
+---
+--- This is an asynchronous method; it will not pause the script while the request is processing.
+--- Instead, it will later run the given callback function once the request has completed or failed.
+---
 --- toobject method must be used for the userdata if it is a table.
 --- tolua method must be used for the error message.
 --- @param userdata The userdata for the level that will be saved to the server.
