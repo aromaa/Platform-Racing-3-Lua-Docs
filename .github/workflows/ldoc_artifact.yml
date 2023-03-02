@@ -37,7 +37,7 @@ jobs:
         if: ${{ inputs.deploy_page }} 
         uses: actions/configure-pages@v3
       - name: Setup Lua
-        uses: leafo/gh-actions-lua@v9
+        uses: leafo/gh-actions-lua@v10
         with:
           luaVersion: 5.1
       - name: Install LuaRocks
