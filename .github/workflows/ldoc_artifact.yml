@@ -54,7 +54,7 @@ jobs:
         with:
             name: 'LDOC_zip'
             path: "${{ runner.temp }}/LDOC"
-            retention-days: 7
+            retention-days: 0
       - name: Create Artifact (TAR)
         if: ${{ inputs.deploy_page }} 
         run: |
@@ -72,7 +72,7 @@ jobs:
         with:
             name: 'LDOC_tar'
             path: ${{ runner.temp }}/artifact.tar
-            retention-days: 7
+            retention-days: 0
     
   # Optional page deployment job
   deploy:
