@@ -30,7 +30,7 @@ jobs:
             mkdir "${{ runner.temp }}/source/"
             for f in ./* ; do
                 if [ -f "$f" ]; then
-                    cp "$f" "${{ runner.temp }}/$f"
+                    cp "$f" "${{ runner.temp }}/source/$f"
                 fi
             done
       - name: Setup Pages
