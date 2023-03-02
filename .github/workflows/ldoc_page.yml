@@ -32,6 +32,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Move Lua Installation Outside Directory
+        run: cd ..
       - name: Setup Lua
         uses: leafo/gh-actions-lua@v9
         with:
@@ -43,6 +45,8 @@ jobs:
           luarocks install luafilesystem
           luarocks install penlight
           luarocks install ldoc
+      - name: CD Back Into Directory
+        run: cd Platform-Racing-3-Lua-Docs/
       - name: Run LDoc
         run: ldoc ./ --template "." --format="markdown" -d out
       - name: Upload artifact
