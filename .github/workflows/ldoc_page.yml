@@ -34,7 +34,9 @@ jobs:
         run: |
             mkdir source/
             for f in ./* ; do
-                cp "$f" "source/$f"
+                if [ -f "$f" ]; then
+                    cp "$f" "source/$f"
+                fi
             done
       - name: Setup Pages
         uses: actions/configure-pages@v3
