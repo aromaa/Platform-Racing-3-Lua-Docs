@@ -30,10 +30,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Isolate LDoc source
+        run: |
+            mkdir source/
+            cp ./ source/
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Move Lua Installation Outside Directory
-        run: cd ../
       - name: Setup Lua
         uses: leafo/gh-actions-lua@v9
         with:
@@ -48,7 +50,7 @@ jobs:
       - name: CD Back Into Directory
         run: cd ./Platform-Racing-3-Lua-Docs
       - name: Run LDoc
-        run: ldoc ./ --template "." --format="markdown" -d out
+        run: ldoc source/ --template "source/" --format="markdown" -d out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
