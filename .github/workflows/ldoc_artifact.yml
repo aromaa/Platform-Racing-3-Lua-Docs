@@ -1,8 +1,5 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
-name: Deploy LDoc Site to Artifact (Pages Optional)
+# Workflow for building and deploying LDoc to Artifact, and optionally Pages
+name: Deploy LDoc to Artifact (Optional Pages)
 
 on:
   # Runs on pushes targeting the default branch
@@ -21,6 +18,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
+  pages: write
   id-token: write
 
 # Allow one concurrent deployment
@@ -36,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-            ref: '$default-branch'
+            ref: '${{ github.event.repository.default_branch }}'
       - name: Isolate LDoc source
         run: |
             mkdir source/
