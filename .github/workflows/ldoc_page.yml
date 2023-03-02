@@ -51,8 +51,6 @@ jobs:
           luarocks install luafilesystem
           luarocks install penlight
           luarocks install ldoc
-      - name: CD Back Into Directory
-        run: cd ./Platform-Racing-3-Lua-Docs
       - name: Run LDoc
         run: ldoc source/ --template "source/" --format="markdown" -d out
       - name: Upload artifact
