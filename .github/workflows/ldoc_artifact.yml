@@ -58,7 +58,7 @@ jobs:
             luarocks install ldoc
       - name: Run LDoc
         run: ldoc source/ --template "source/" --format="markdown" -d out
-      - name: Create Artifact
+      - name: Create Artifacts (TAR and ZIP)
         run: |
             chmod -c -R +rX "out/" | while read line; do
               echo "::warning title=Invalid file permissions automatically fixed::$line"
@@ -67,14 +67,19 @@ jobs:
               --dereference --hard-dereference \
               --directory "out/" \
               -cvf "$RUNNER_TEMP/artifact.tar" \
-              --exclude=.git \
-              --exclude=.github \
               .
-      - name: Upload artifact
+            zip -r -FS "$RUNNER_TEMP/artifact.zip" "out/"
+      - name: Upload artifact (TAR)
         uses: actions/upload-artifact@main
         with:
-            name: 'LDOC'
+            name: 'LDOC_tar'
             path: ${{ runner.temp }}/artifact.tar
+            retention-days: 7
+      - name: Upload artifact (ZIP)
+        uses: actions/upload-artifact@main
+        with:
+            name: 'LDOC_zip'
+            path: ${{ runner.temp }}/artifact.zip
             retention-days: 7
     
   # Optional page deployment job
@@ -90,4 +95,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          artifact_name: 'LDOC'
+          artifact_name: 'LDOC_tar'
