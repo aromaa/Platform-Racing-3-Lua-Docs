@@ -283,7 +283,7 @@ end
 function givegrenade(settings)
 end
 
---- [DEPRECATED]Gives the player a lightning cloud item with specified settings.
+--- [DEPRECATED] Gives the player a lightning cloud item with specified settings.
 --- 
 --- Fields: damage(int), zaptime(int), extrazaptime(int), zaps(int), recovery(float), passcooldown(int)
 --- @param settings The given lightning cloud item as an AS3 Object.

@@ -12,6 +12,10 @@
         span.parameter {
             font-size: 1.09em;
         }
+        span.deprecated {
+            font-weight: bold;
+            color: #CD0000;
+        }
     </style>
 </head>
 <body>
@@ -135,7 +139,7 @@
 #  for item in items() do
 	<tr>
 	<td class="name" $(nowrap)><a href="#$(item.name)">$(display_name(item))</a></td>
-	<td class="summary">$(M(item.summary,item))</td>
+	<td class="summary">$(M(item.summary,item):gsub("%[DEPRECATED%]", "<span class=\"deprecated\">[DEPRECATED]</span>"))</td>
 	</tr>
 #  end -- for items
 </table>
@@ -176,7 +180,7 @@
 #  end
     </dt>
     <dd>
-    $(M(ldoc.descript(item),item))
+    $(M(ldoc.descript(item),item):gsub("%[DEPRECATED%]", "<span class=\"deprecated\">[DEPRECATED]</span>"))
 
 #   if ldoc.custom_tags then
 #    for custom in iter(ldoc.custom_tags) do
