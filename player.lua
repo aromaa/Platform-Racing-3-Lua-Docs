@@ -169,55 +169,55 @@ end
 --- 
 ---### Angel's Wings ("angelwings") ###
 --- 
---- * ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
 --- 
---- * reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 99999 ]*
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 99999 ]*
 ---
---- * strength: (***float***) the strength of the item. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- * !strength: (***float***) the strength of the item. *[ Default 1｜Min -9999｜Max 99999 ]*
 --- 
 ---### Black Hole ("blackhole") ###
 --- 
---- * ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
 --- 
---- * duration: (***float***) the duration in milliseconds of the black hole. *[ Default 9900｜Min 0｜Max 99999999 ]*
+--- * !duration: (***float***) the duration in milliseconds of the black hole. *[ Default 9900｜Min 0｜Max 99999999 ]*
 --- 
---- * reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
 --- 
---- * speedx: (***float***) the horizontal speed of the projectile in pixels per tick. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **x speed** in block editor*
+--- * !speedx: (***float***) the horizontal speed of the projectile in pixels per tick. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **x speed** in block editor*
 --- 
---- * speedy: (***float***) the vertical speed of the projectile in pixels per tick. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **y speed** in block editor*
+--- * !speedy: (***float***) the vertical speed of the projectile in pixels per tick. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **y speed** in block editor*
 --- 
---- * strength: (***float***) the strength of the item. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- * !strength: (***float***) the strength of the item. *[ Default 1｜Min -9999｜Max 99999 ]*
 --- 
 ---### Bow ("bow") ###
 --- 
---- * ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
 --- 
---- * autofire: (***bool***) whether the item will be automatically used once full charge is reached. *[ Default false ]*
+--- * !autofire: (***bool***) whether the item will be automatically used once full charge is reached. *[ Default false ]*
 --- 
---- * damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
 --- 
---- * knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- * !knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
 ---
---- * maxforce: (***float***) the maximum strength the item can be charged to. *[ Default 90｜Min 0｜Max 999999 ]*
+--- * !maxforce: (***float***) the maximum strength the item can be charged to. *[ Default 90｜Min 0｜Max 999999 ]*
 --- 
---- * noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]*
+--- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]*
 --- 
---- * phasing: (***int***) the number of blocks the item can phase through. *[ Default 0｜Min 0｜Max 99999 ]*
+--- * !phasing: (***int***) the number of blocks the item can phase through. *[ Default 0｜Min 0｜Max 99999 ]*
 --- 
---- * pullspeed: (***float***) the speed of the item's charge up. *[ Default 1｜Min 0｜Max 99999 ]*
+--- * !pullspeed: (***float***) the speed of the item's charge up. *[ Default 1｜Min 0｜Max 99999 ]*
 --- 
---- * range: (***float***) the maximum lifetime of the projectile in ticks before it is deleted. *[ Default 100｜Min 0｜Max 9999999 ]*
+--- * !range: (***float***) the maximum lifetime of the projectile in ticks before it is deleted. *[ Default 100｜Min 0｜Max 9999999 ]*
 --- 
---- * recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
 --- 
---- * reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 99999 ]*
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 99999 ]*
 --- 
---- * repeat: (***int***) the number of extra projectiles to be spawned by using the item. *[ Default 0｜Min 0｜Max 99999 ]*
+--- * !repeat: (***int***) the number of extra projectiles to be spawned by using the item. *[ Default 0｜Min 0｜Max 99999 ]*
 --- 
---- * rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0｜Min -99999999999｜Max 999999999999 ]*
+--- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0｜Min -99999999999｜Max 999999999999 ]*
 --- 
---- * sap (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
 --- 
 --- @usage player.giveitem("lasergun")
 --- @usage player.giveitem("sword", toobject{ammo=20,reload=2,recoil=50})
