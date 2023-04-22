@@ -42,6 +42,15 @@ paint = -1
 --- By default 1.
 alpha = 1
 
+--- Gets the current item of the player, and returns it as an AS3 Object.
+--- @usage player.getitem()
+--- @usage local ammo = tolua(player.getitem().ammo)
+--- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value. These properties are the exact same properties listed under the item in player.giveitem().
+--- @see player.giveitem
+function getitem()
+end
+
+
 --- Sets a metadata with a specified key-value pair to the player.
 --- @tparam string key Name of the metadata variable (the key)
 --- @param value Value of the metadata variable
