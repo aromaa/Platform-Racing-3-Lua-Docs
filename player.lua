@@ -486,6 +486,18 @@ end
 function giveitem(item, settings)
 end
 
+--- Gets the current item of the player, and returns it as an AS3 Object.
+--- @usage player.getitem()
+--- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value.
+--- 
+---### Fields ###
+--- 
+--- *!settings: The properties of the current item as an AS3 Object. These properties are the exact same properties listed under the item in player.getitem().
+---
+--- @see player.giveitem
+function getitem()
+end
+
 --- Teleports the player to the given direction.
 --- @tparam number xpos Teleport the player (xpos) blocks among the x-axis.
 --- @tparam number ypos Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
