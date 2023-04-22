@@ -201,7 +201,7 @@ end
 ---
 --- * !maxforce: (***float***) the maximum strength the item can be charged to. *[ Default 90｜Min 0｜Max 999999 ]*
 --- 
---- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]*
+--- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]. Displayed as **no knockback** in block editor*
 --- 
 --- * !phasing: (***int***) the number of blocks the item can phase through. *[ Default 0｜Min 0｜Max 99999 ]*
 --- 
@@ -215,10 +215,272 @@ end
 --- 
 --- * !repeat: (***int***) the number of extra projectiles to be spawned by using the item. *[ Default 0｜Min 0｜Max 99999 ]*
 --- 
---- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0｜Min -99999999999｜Max 999999999999 ]*
+--- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0 ]. Displayed as **shot rotation** in block editor*
 --- 
 --- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
 --- 
+---### Freeze Ray ("freezeray") ###
+--- 
+--- * No customizable properties exist.
+--- 
+---### Grenade ("grenade") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !blastdamage: (***int***) the amount of damage the item's blast will deal. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **damage** under blast settings in block editor*
+--- 
+--- * !blastdelay: (***float***) the delay in milliseconds of the item's blast. *[ Default 95｜Min 0｜Max 999999 ]. Displayed as **delay** under blast settings in block editor*
+--- 
+--- * !blastradius: (***int***) the destructive radius of the item's blast. *[ Default 0｜Min 0｜Max 99999 ]. Displayed as **radius** under blast settings in block editor*
+--- 
+--- * !blastrecovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's blast. *[ Default 2500｜Min 0｜Max 99999999 ]. Displayed as **recovery** under blast settings in block editor*
+--- 
+--- * !damage: (***int***) the amount of damage the item *collision* will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !hurtarea: (***int***) the damaging radius of the item's blast. *[ Default 120｜Min 0｜Max 9999999 ]. Displayed as **hurt area** under blast settings in block editor*
+--- 
+--- * !knockback: (***float***) the strength of the knockback the item *collision* will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's *collision* damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+--- * !throwforcex: (***float***) the horizontal force applied to the item's throw. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **x force** in block editor*
+--- 
+--- * !throwforcey: (***float***) the vertical force applied to the item's throw. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **y force** in block editor*
+--- 
+---### Heart ("heart") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !heal: (***int*** ) the amount of healing the item does per use. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+---### Jet Pack ("jetpack") ###
+--- 
+--- * !force: (***float***) the force of the item's thrust. ( ͡° ͜ʖ ͡°) *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !fuel: (***float***) the amount of milliseconds of use the item has. *[ Default 6600｜Min 0｜Max 99999999 ]*
+--- 
+---### Laser Gun ("lasergun") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *Affected by Police Hat (+2) unless ammo is 0.* *[ Default 3｜Min 0｜Max 99999 ]*
+--- 
+--- * !croptexture: (***bool***) specifies whether the custom texture should be cropped. Only applies if a custom texutre was chosen. Visual only. *[ Default false ]. Displayed as **auto-center** in block editor*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]. Displayed as **no knockback** in block editor*
+--- 
+--- * !phasing: (***int***) ignores the specified amount of collisions that would destroy the projectile, and instead, phases it through. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !range: (***float***) the maximum lifetime of the projectile in ticks before it is deleted. *[ Default 100｜Min 0｜Max 999999 ]*
+--- 
+--- * !recoil: (***float***) the recoil the item user suffers from using the item. *[ Default 0.15｜Min -9999｜Max 99999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+--- * !repeat: (***int***) the number of extra projectiles to be spawned by using the item. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0 ]. Displayed as **shot rotation** in block editor*
+--- 
+--- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !speed: (***float***) the speed of the projectile in pixels per tick. *[ Default 29｜Min 0｜Max 99999 ]*
+--- 
+--- * !stamprot: (***float***) the rotation of the item graphic. Visual only. *[ Default 0｜Min -360｜Max 360 ]. Displayed as **rotation** under stamp settings in block editor*
+--- 
+--- * !transferfade: (***bool***) whenever the projectile runs out of range and dies, this specifies whether the item user gets teleported to that death (sounds worse than it is). *[ Default false ]. Displayed as **transfer fade** in block editor*
+--- 
+--- * !transferhit: (***bool***) whenever the projectile collides with anything, this specifies whether the item user gets teleported to the collision. Repeatable if there are multiple collisions. *[ Default false ]. Displayed as **transfer hit** in block editor*
+--- 
+--- * !useanimation: (***bool***) specifies whether the item's use animation gets played upon a use. Only applies for custom textures. Visual only. *[ Default false ]. Displayed as **item animation** in block editor*
+--- 
+--- * !xOffset: (***float***) the horizontal displacement of the item graphic in pixels. Visual only. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **x offset** in block editor*
+--- 
+--- * !xscale: (***float***) the horizontal scaling of the item graphic. Visual only. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **x scale** in block editor*
+--- 
+--- * !yOffset: (***float***) the vertical displacement of the item graphic in pixels. Visual only. Positive moves the graphic down. *[ Default 0｜Min -9999｜Max 99999 ]. Displayed as **y offset** in block editor*
+--- 
+--- * !yscale: (***float***) the vertical scaling of the item graphic. Visual only. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **y scale** in block editor*
+--- 
+---### Lightning ("lightning") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+---### Lightning Cloud ("lightningcloud") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+---
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+---
+--- * !extrazaptime: (***int***) the amount of time in ticks until the second, *and every subsequent*, zap hits. *[ Default 270｜Min 0｜Max 9999999 ]*
+--- 
+--- * !passcooldown: (***int***) the cooldown in milliseconds before the item can be passed to another player. Note that currently, due to desync, only one pass is tolerated, so setting this value effectively does nothing. *[ Default 270000｜Min 0｜Max 9999999999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+---
+--- * !zaps: (***int***) the amount of zaps the victim gets hit by. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !zaptime: (***int***) the amount of time in ticks until *only* the first zap hits. *[ Default 270｜Min 0｜Max 9999999 ]*
+--- 
+---### Napalm ("napalm") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !duration: (***float***) the duration in milliseconds of the combustion. *[ Default 10000｜Min 0｜Max 999999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+---### Portable Block ("portableblock") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !pattern: (***String***) determines the placement pattern of the block. Each section is delimited by semicolons and takes the form "x,y", where x and y are the amount of blocks among the x and y axis where the block placement is offset. Specifying a section as "f" places blocks between the two surrounding specified sections, if they share an axis. *[ Default ["0,0"] ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 9999999 ]*
+--- 
+--- * !speed: (***float***) the frame number to begin the block-placing animation at. *[ Default 0｜Min 0｜Max 33 ]*
+--- 
+---### Portable Mine ("portablemine") ###
+--- 
+--- * No customizable properties exist.
+--- 
+---### Retreater ("retreater") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has, counting both marks and retreats. *[ Default 2｜Min 0｜Max 99998 ]*
+--- 
+--- * !interval: (***float***) the amount of marks before retreats happen. Interval of n means that the first n uses are marks, and the following n uses are retreats, with each retreat going to its respective mark. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 9999999 ]*
+--- 
+---### Rocket Launcher ("rocketlauncher") ###
+--- 
+--- * !accel: (***float***) the acceleration of the projectile (the amount of speed added per tick). *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !maxvel: (***float***) the maximum velocity of the projectile. *[ Default 20.5｜Min 0｜Max 99999999 ]*
+--- 
+--- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]. Displayed as **no knockback** in block editor*
+--- 
+--- * !phasing: (***int***) ignores the specified amount of collisions that would destroy the projectile, and instead, phases it through. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !range: (***float***) the maximum lifetime of the projectile in ticks before it is deleted. *[ Default 100｜Min 0｜Max 9999999 ]*
+--- 
+--- * !recoil: (***float***) the recoil the item user suffers from using the item. *[ Default 0.4｜Min -99999｜Max 999999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !repeat: (***int***) the number of extra projectiles to be spawned by using the item. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0 ]. Displayed as **shot rotation** in block editor*
+--- 
+--- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !speed: (***float***) the speed of the projectile in pixels per tick. *[ Default 14.5｜Min 0｜Max 99999999 ]*
+--- 
+---### Shield ("shield") ###
+--- 
+--- * !duration: (***float***) the duration in milliseconds of the shield. *[ Default 10000｜Min 0｜Max 999999999 ]*
+--- 
+---### Snowball ("snowball") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !range: (***float***) the maximum lifetime of the projectile in ticks before it is deleted. *[ Default 100｜Min 0｜Max 999999 ]*
+--- 
+--- * !recoil: (***float***) the recoil the item user suffers from using the item. *[ Default 0.1｜Min -99999｜Max 999999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 300｜Min 0｜Max 9999999 ]*
+--- 
+--- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !speed: (***float***) the speed of the projectile in pixels per tick. *[ Default 21｜Min 0｜Max 999999 ]*
+--- 
+---### Speed Burst ("speedburst") ###
+--- 
+--- * !duration: (***float***) the duration in milliseconds of the item. *Affected by Winged Helmet (+3000).* *[ Default 6000｜Min 0｜Max 99999999 ]*
+--- 
+--- * !strength: (***float***) the strength of the speed bonus. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+---### Super Teleport ("superteleport") ###
+--- 
+--- * No customizable properties exist.
+--- 
+---### Super Jump ("superjump") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !strength: (***float***) the strength of the item. *[ Default 0.7｜Min -99999｜Max 999999 ]*
+--- 
+---### Sword ("sword") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 3｜Min 0｜Max 99999 ]*
+--- 
+--- * !croptexture: (***bool***) specifies whether the custom texture should be cropped. Only applies if a custom texutre was chosen. Visual only. *[ Default false ]. Displayed as **auto-center** in block editor*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !knockback: (***float***) the strength of the knockback the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !noknockback: (***bool***) whether the item will not deal knockback. *[ Default false ]. Displayed as **no knockback** in block editor*
+--- 
+--- * !recoil: (***float***) the recoil the item user suffers from using the item. *[ Default 0.3｜Min -99999｜Max 999999 ]*
+--- 
+--- * !recovery: (***float***) the time in milliseconds a hurt player will spend recovering from the item's damage. *[ Default 2500｜Min 0｜Max 99999999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 500｜Min 0｜Max 9999999 ]*
+--- 
+--- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !stamprot: (***float***) the rotation of the item graphic. Visual only. *[ Default 0｜Min -360｜Max 360 ]. Displayed as **rotation** under stamp settings in block editor*
+--- 
+--- * !useanimation: (***bool***) specifies whether the item's use animation gets played upon a use. Only applies for custom textures. Visual only. *[ Default false ]. Displayed as **item animation** in block editor*
+--- 
+--- * !xOffset: (***float***) the horizontal displacement of the item graphic in pixels. Visual only. *[ Default -30.9｜Min -9999｜Max 99999 ]. Displayed as **x offset** in block editor*
+--- 
+--- * !xscale: (***float***) the horizontal scaling of the item graphic. Visual only. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **x scale** in block editor*
+--- 
+--- * !yOffset: (***float***) the vertical displacement of the item graphic in pixels. Visual only. Positive moves the graphic down. *[ Default -3.7｜Min -9999｜Max 99999 ]. Displayed as **y offset** in block editor*
+--- 
+--- * !yscale: (***float***) the vertical scaling of the item graphic. Visual only. *[ Default 1｜Min -9999｜Max 99999 ]. Displayed as **y scale** in block editor*
+--- 
+---### Teleport ("teleport") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !horizontal: (***float***) the travel distance among the x axis, in blocks. *[ Default 3｜Min -9999｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 99999 ]*
+--- 
+--- * !vertical: (***float***) the travel distance among the y axis, in blocks. *[ Default 0｜Min -9999｜Max 99999 ]*
+---
 --- @usage player.giveitem("lasergun")
 --- @usage player.giveitem("sword", toobject{ammo=20,reload=2,recoil=50})
 function giveitem(item, settings)
