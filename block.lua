@@ -16,6 +16,28 @@ xpos = 0
 --- The absolute y-position of the block.
 ypos = 0
 
+--- The event handler for block break. This event may be cancelled to prevent the block from breaking.
+--- 
+--- Provides the broken block, the side from which it was broken, and the reason;
+--- the reason may be either a Projectile, a Player (which may also be a LocalPlayer), or nil
+--- @see eventlistener
+--- @see utils.instanceof
+--- @usage game.level.getBlockAt(5, 7).onBreak.addListener(function(event)
+----    event.cancelled = true --Prevents the block from breaking
+----    
+----    local block = tolua(event.block)
+----    local side = tolua(event.side)
+----    local reason = tolua(event.reason)
+----    
+----    if tolua(instanceof(reason, Projectile)) then --Checks if an item was used to break the block
+----        local shooter = tolua(reason.shooter)
+----        if tolua(instanceof(shooter, LocalPlayer)) then --Checks if the shooter is the local player
+----            shooter.hurt()
+----        end
+----    end
+----end)
+onBreak = nil
+
 --- Tries to move the block to a specified direction. Move delay and the option to move the player can be passed, too.
 --- @tparam string direction The direction to move the block to.
 --- @tparam number moveDelay The delay of how long it takes to the block to be able to be moved again. By default 100 (ms).
@@ -29,7 +51,7 @@ end
 --- Teleports the block to the given relative position. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
 --- @tparam int xpos The amount to move the block among the x-axis.
 --- @tparam int ypos The amount to move the block among the y-axis.
---- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
+--- @tparam boolean removecurrentblock If the original block should be deleted upon a successful teleportation. True by default.
 --- @tparam boolean removetargetspot If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
 --- @treturn boolean Returns whether the move was successful.
 --- @usage block.teleportto(0, -7, false, true)
@@ -39,11 +61,25 @@ end
 --- Teleports the block to the given absolute position. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
 --- @tparam int xpos The x-position to teleport the block to.
 --- @tparam int ypos The y-position to teleport the block to.
---- @tparam boolean removecurrentblock If the original block should be deleted among a successful teleportation. True by default.
+--- @tparam boolean removecurrentblock If the original block should be deleted upon a successful teleportation. True by default.
 --- @tparam boolean removetargetspot If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
 --- @treturn boolean Returns whether the move was successful.
 --- @usage block.teleporttopos(0, -7, false, true)
 function teleporttopos(xpos, ypos, removecurrentblock, removetargetspot)
+end
+
+--- Teleports the block to multiple positions. NOTE: This is only client-side, meaning this function will only work on the person's client who touched the block.
+--- 
+--- This is equivalent to calling block.teleportto() multiple times, but in a cleaner and more performant way.
+--- @tparam boolean removecurrentblock If the original block should be deleted upon a successful teleportation. True by default.
+--- @tparam boolean removetargetspot If true, the teleporting block teleports to its specified location and deletes the block if its spot is taken up. False by default.
+--- @tparam vararg ... You may pass any number of pairs of xpos and ypos, or you may instead (or additionally) pass a call to tovararg() as the final argument.
+--- @treturn array Returns an array of booleans, in which the n-th value represents whether the n-th move was successful.
+--- @usage block.bulkteleportto(false, true, 0, -7, 0, -8, 1, -8, 0, -8)
+--- @usage block.bulkteleportto(false, true, tovararg({{x = 0, y = -7}, {x = 0, y = -8}, {x = 1, y = -8}, {x = 1, y = -7}}))
+--- @see block.teleportto
+--- @see utils.tovararg
+function bulkteleportto(removecurrentblock, removetargetspot, ...)
 end
 
 --- Makes the block vanish and reappear later. The vanish delay can be passed.
@@ -64,7 +100,7 @@ end
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
 --- @tparam number recovery The number of seconds the player takes to recover. By default 2.5.
---- @tparam bool checkRecovery Prevents pushing the player if they have invulnerability received by recovering from damage. By default true.
+--- @tparam boolean checkRecovery Prevents pushing the player if they have invulnerability received by recovering from damage. By default true.
 --- @usage block.hurtplayer(3, 1.1)
 function hurtplayer(damage, vel, recovery, checkRecovery)
 end
