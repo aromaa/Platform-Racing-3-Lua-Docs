@@ -122,6 +122,12 @@ rightpressed = false
 --- Is the spacebar currently pressed? Read-only.
 spacepressed = false
 
+--- A scalar with a range of [-1, 1] representing the mouse's x coordinate along the screen. -1 means the left-most position, 0 means the center, and 1 means the right-most position.
+mousex = 0
+
+--- A scalar with a range of [-1, 1] representing the mouse's y coordinate along the screen. -1 means the bottom-most position, 0 means the center, and 1 means the top-most position.
+mousey = 0
+
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.
@@ -218,6 +224,36 @@ end
 --- * !rotation: (***float***) the angle in degrees to rotate the projectile by. If a comma separated list of numbers is provided (e.g. **"5,10"**), the second number will be the angle in degrees between each projectile. *[ Default 0 ]. Displayed as **shot rotation** in block editor*
 --- 
 --- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+---### Buzzsaw ("buzzsaw") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !damage: (***int***) the amount of damage the item will deal. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !duration: (***int***) the maximum lifetime of the projectile in ticks before it is deleted. **this will be renamed to 'range' in a future update.** *[ Default 300｜Min 0｜Max 9999999 ]*
+---
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 800｜Min 0｜Max 99999 ]*
+--- 
+--- * !gravity: (***float***) the gravity to be applied to the projectile in pixels per tick. *[ Default 1｜Min -9999｜Max 99999 ]*
+--- 
+--- * !horizontal: (***float***) the initial horizontal speed of the projectile when thrown. *[ Default 4｜Min -9999｜Max 99999 ]*
+--- 
+--- * !post-gravity: (***float***) the gravity to be applied to the projectile in pixels per tick after being detached from a block. *[Default 1｜Min -9999｜Max 99999 ]*
+---
+--- * !vertical: (***float***) the initial vertical speed of the projectile when thrown. *[ Default -10｜Min -9999｜Max 99999 ]*
+--- 
+--- * !overrides: (***string***) a bitmask representing which block type interactions to override. each bit represents a block type - leaving the bit at 0 will allow the standard interaction to occur, whereas setting that bit to 1 will disable the interaction and cause the projectile to treat that block type as an active block instead. the override block types and bit positions are listed below. *[ Default "00000" ]*
+---     
+---     + !explode: `0000X`
+---     
+---     + !vanish: `000X0`
+---     
+---     + !shatter / crumble / weak: `00X00`
+---     
+---     + !arrow push: `0X000`
+---     
+---     + !inactive: `X0000`
 --- 
 ---### Freeze Ray ("freezeray") ###
 --- 
@@ -347,7 +383,7 @@ end
 --- 
 --- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
 --- 
---- * !pattern: (***String***) determines the placement pattern of the block. Each section is delimited by semicolons and takes the form "x,y", where x and y are the amount of blocks among the x and y axis where the block placement is offset. Specifying a section as "f" places blocks between the two surrounding specified sections, if they share an axis. *[ Default ["0,0"] ]*
+--- * !pattern: (***string***) determines the placement pattern of the block. Each section is delimited by semicolons and takes the form "x,y", where x and y are the amount of blocks among the x and y axis where the block placement is offset. Specifying a section as "f" places blocks between the two surrounding specified sections, if they share an axis. *[ Default "0,0" ]*
 --- 
 --- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 0｜Min 0｜Max 9999999 ]*
 --- 
@@ -498,12 +534,20 @@ end
 function getitem()
 end
 
---- Teleports the player to the given direction.
+--- Teleports the player to the given relative position.
 --- @tparam number xpos Teleport the player (xpos) blocks among the x-axis.
 --- @tparam number ypos Teleport the player (ypos) blocks among the y-axis. A positive y teleports the player down.
 --- @tparam boolean keepvelocity Determines if the player keeps their velocity after teleportation. False by default.
 --- @usage player.teleportto(3, -1, true)
 function teleportto(xpos, ypos, keepvelocity)
+end
+
+--- Teleports the player to the given absolute position.
+--- @tparam int xpos The x-position to teleport the player to.
+--- @tparam int ypos The y-position to teleport the player to.
+--- @tparam boolean keepvelocity Determines if the player keeps their velocity after teleportation. False by default.
+--- @usage player.teleporttopos(0, 0, true)
+function teleporttopos(xpos, ypos, keepvelocity)
 end
 
 --- Rotates a player to a given rotation at a given speed.

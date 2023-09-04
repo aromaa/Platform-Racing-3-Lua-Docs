@@ -118,6 +118,10 @@ end
 function shatter()
 end
 
+--- Removes the block from the map.
+function remove()
+end
+
 --- Applies paint to the block, altering its appearance until the paint wears off.
 --- @tparam int color The decimal (or hex) value of the RGB color of the paint. By default 16777215.
 --- @tparam int duration How long does the paint last? By default 999999.
@@ -141,7 +145,7 @@ end
 --- @tparam int x How many blocks to the right the wanted block is?
 --- @tparam int y How many blocks downwards the wanted block is?
 --- @tparam boolean keepPlayerReference Is the player reference kept? By default false.
---- @return The found block as an object. Returns nil if a block isn't found.
+--- @treturn block The found block as an object. Returns nil if a block isn't found.
 --- @usage block.getblock(0,-1).shatter()
 function getblock(x, y, keepPlayerReference)
 end

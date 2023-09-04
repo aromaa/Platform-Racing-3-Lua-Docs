@@ -215,7 +215,7 @@
 #       if tp ~= '' then
             <span class="types">$(tp)</span>
 #       end
-        $(M(item.params.map[p],item):gsub("<p>(%s*)!([%w_]+):", "<p>%1<span class=\"parameter\">%2</span>"))
+        $(M(item.params.map[p],item):gsub("<p>([^\n\r]-)%[FORCE_INLINE%]%s*([^\n\r]-)</p>", "%1%2"):gsub("<p>(%s*)!([%w_ /]+):", "<p>%1<span class=\"parameter\">%2</span>"))
 #       if def == true then
          (<em>optional</em>)
 #      elseif def then
