@@ -3,20 +3,20 @@
 
 --- The Projectile class.
 --- @see projectile
---- @see utils.instanceof
+--- @see instanceof
 --- @see block.onBreak
 Projectile = nil
 
 --- The Player class.
 --- @see remoteplayer
---- @see utils.instanceof
+--- @see instanceof
 --- @see game.getPlayer
 Player = nil
 
 --- The LocalPlayer class.
 --- All instances of this class also belong to Player class.
 --- @see player
---- @see utils.instanceof
+--- @see instanceof
 LocalPlayer = nil
 
 --- Converts game value to Lua. This allows the modification of given value.
@@ -51,8 +51,8 @@ end
 --- @param object The object. tolua must be used for this parameter
 --- @param class The class.
 --- @treturn boolean Returns whether the object is an instance of the class.
---- @see utils.Projectile
---- @see utils.Player
+--- @see Projectile
+--- @see Player
 --- @usage isProjectile = tolua(instanceof(tolua(event.reason), Projectile))
 function instanceof(object, class)
 end

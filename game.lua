@@ -5,8 +5,15 @@
 level = nil
 
 --- The amount of players in the game. Read-only.
---- @see game.getPlayer
+--- @see getPlayer
 playersCount = 1
+
+--- [Alias of `playersCount`] The amount of players in the game. Read-only.
+--- @see getPlayer
+playerCount = 1
+
+--- How many milliseconds have passed since Lua started running. Read-only.
+elapsedMS = 0
 
 --- The event handler for game init. A drawing lock may be obtained from this event.
 ---
@@ -60,9 +67,22 @@ playerRemoved = nil
 --- @tparam int index Index of the player.
 --- @return Returns the local/remote player object.
 --- @usage game.getPlayer(1)
---- @see game.playersCount
+--- @see playersCount
 --- @see remoteplayer
 function getPlayer(index)
+end
+
+--- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- @tparam number interval How many milliseconds must pass to complete an interval.
+--- @tparam int maxCount How many intervals will be completed.
+--- @tparam function listener The listener to be called every time an iteration is completed.
+--- @treturn timer The created timer object.
+--- @see timer
+--- @usage alienSpawnTimer = game.newTimer(1000 * 10, 9999999, function()
+----   -- Spawns a new alien every 10 seconds
+----   game.level.newAlien(1, os.time(), toobject{})
+----end)
+function newTimer(interval, maxCount, listener)
 end
 
 --- Requests the player's saved userdata for the level from the server.
@@ -82,7 +102,7 @@ end
 ----        player.jump = tolua(data.jump)
 ----    end
 ----end)
---- @see game.saveUserData
+--- @see saveUserData
 function requestUserData(callback)
 end
 
@@ -106,6 +126,6 @@ end
 ----        player.chat("Error saving user data: " .. tostring(tolua(error)), 0xFF0000)
 ----    end
 ----end)
---- @see game.requestUserData
+--- @see requestUserData
 function saveUserData(userdata, callback)
 end
