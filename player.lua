@@ -152,6 +152,7 @@ function getmetadata(key, defaultValue)
 end
 
 --- Returns a player timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- Unlike `game.newTimer`, these timers are only called after the game is started and while the player is alive.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
 --- @tparam int maxCount How many intervals will be completed.
 --- @tparam function listener The listener to be called every time an iteration is completed.
@@ -161,6 +162,11 @@ end
 ----   player.health = tolua(player.health) + 1
 ----end)
 function newTimer(interval, maxCount, listener)
+end
+
+--- Destroys all player timers created by `newTimer`.
+--- @see timer
+function destroyAllTimers()
 end
 
 --- Sends an alert popup to the player.

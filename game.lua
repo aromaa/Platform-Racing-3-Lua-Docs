@@ -73,6 +73,7 @@ function getPlayer(index)
 end
 
 --- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- Unlike `player.newTimer` and other tick handlers, these timers can run before the game has finished initializing and after the player is dead.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
 --- @tparam int maxCount How many intervals will be completed.
 --- @tparam function listener The listener to be called every time an iteration is completed.
@@ -83,6 +84,11 @@ end
 ----   game.level.newAlien(1, os.time(), toobject{})
 ----end)
 function newTimer(interval, maxCount, listener)
+end
+
+--- Destroys all game timers created by `newTimer`.
+--- @see timer
+function destroyAllTimers()
 end
 
 --- Requests the player's saved userdata for the level from the server.
