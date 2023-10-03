@@ -65,10 +65,10 @@ safex = 0
 --- The absolute y-position of the player's respawn location.
 safey = 0
 
---- The absolute x-position of the camera (top left corner; not affected by player.fov).
+--- The absolute x-position of the camera (top left corner; not affected by `fov`).
 camerax = 0
 
---- The absolute y-position of the camera (top left corner; not affected by player.fov).
+--- The absolute y-position of the camera (top left corner; not affected by `fov`).
 cameray = 0
 
 --- Defines how fast the camera does follow the player. Ranges from 0 to 1. 0 means the camera will not move at all.
@@ -149,6 +149,27 @@ end
 --- @return Returns the key's value. Returns defaultValue instead if the key isn't found.
 --- @usage player.getmetadata("coins", 0)
 function getmetadata(key, defaultValue)
+end
+
+--- Returns a player timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+---
+--- Unlike `game.newTimer`, these timers are only called after the game is started and while the player is alive.
+---
+--- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
+--- @tparam number interval How many milliseconds must pass to complete an interval.
+--- @tparam int maxCount How many intervals will be completed.
+--- @tparam function listener The listener to be called every time an iteration is completed.
+--- @treturn timer The created timer object.
+--- @usage healthRegenTimer = player.newTimer(1000 * 6, 9999999, function()
+----   -- Heals 1 health every 6 seconds
+----   player.health = tolua(player.health) + 1
+----end)
+function newTimer(interval, maxCount, listener)
+end
+
+--- Destroys all player timers created by `newTimer`.
+--- @see timer
+function destroyAllTimers()
 end
 
 --- Sends an alert popup to the player.
@@ -530,7 +551,7 @@ end
 --- 
 --- *!settings: The properties of the current item as an AS3 Object. These properties are the exact same properties listed under the item in player.getitem().
 ---
---- @see player.giveitem
+--- @see giveitem
 function getitem()
 end
 
@@ -683,7 +704,7 @@ end
 --- 
 --- transferhit and transferfade are active when set to 1
 --- @param settings The given laser gun item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.givelaser(toobject{ammo=100,reload=1,speed=50,range=0.5,phasing=10,recoil=0})
 function givelaser(settings)
 end
@@ -692,7 +713,7 @@ end
 --- 
 --- Fields: ammo(int), reload(float), damage(int), recoil(float), knockback(float), sap(int), recovery(float)
 --- @param settings The given sword item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.givesword(toobject{ammo=20,reload=2,recoil=50})
 function givesword(settings)
 end
@@ -705,7 +726,7 @@ end
 --- 
 --- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0
 --- @param settings The given rocket launcher item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.giverocket(toobject{ammo=5,reload=4,speed=-20,range=50,recoil=0})
 function giverocket(settings)
 end
@@ -718,7 +739,7 @@ end
 --- 
 --- rotation also accepts a single float or a string of a single float, in which case float2 defaults to 0 
 --- @param settings The given bow item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.givebow(toobject{ammo=5,pullspeed=2,autofire=1,reload=0,rotation="-6,2",repeats=7})
 function givebow(settings)
 end
@@ -727,7 +748,7 @@ end
 --- 
 --- Fields: ammo(int), reload(float), damage(int), knockback(float), recovery(float), blastdelay(int), throwforcex(float), throwforcey(float), hurtarea(int), blastdamage(int), blastrecovery(float), blastradius(int)
 --- @param settings The given grenade item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.givegrenade(toobject{ammo=1,reload=8,damage=1,knockback=10,recovery=25,blastdelay=95,throwforcex=1,throwforcey=1,hurtarea=120,blastdamage=1,blastrecovery=25,blastradius=1})
 function givegrenade(settings)
 end
@@ -736,7 +757,7 @@ end
 --- 
 --- Fields: damage(int), zaptime(int), extrazaptime(int), zaps(int), recovery(float), passcooldown(int)
 --- @param settings The given lightning cloud item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.givelightningcloud(toobject{damage=1,zaptime=270,extrazaptime=270,zaps=1,recovery=25,passcooldown=27})
 function givelightningcloud(settings)
 end
@@ -745,7 +766,7 @@ end
 --- 
 --- Fields: ammo(int), reload(float), duration(int), strength(float), speedx(int), speedy(int)
 --- @param settings The given black hole item as an AS3 Object.
---- @see player.giveitem
+--- @see giveitem
 --- @usage player.giveblackhole(toobject{ammo=1,reload=8,duration=9900,strength=1,speedx=0,speedy=0})
 function giveblackhole(settings)
 end
@@ -753,13 +774,13 @@ end
 --- [DEPRECATED] Chills the player, causing massive reduction in stats until the effect wears off.
 --- @tparam number amount The amount of chill applied in seconds. By default 6.
 --- @usage player.chill(6)
---- @see player.frost
+--- @see frost
 function chill(amount)
 end
 
 --- [DEPRECATED] Dyes the player's body parts for the rest of the match.
 --- @tparam int color The decimal color applied to the player's parts. By default 16777215.
 --- @usage player.dye(255)
---- @see player.paint
+--- @see paint
 function dye(color)
 end

@@ -77,7 +77,7 @@ end
 --- @treturn array Returns an array of booleans, in which the n-th value represents whether the n-th move was successful.
 --- @usage block.bulkteleportto(false, true, 0, -7, 0, -8, 1, -8, 0, -8)
 --- @usage block.bulkteleportto(false, true, tovararg({{x = 0, y = -7}, {x = 0, y = -8}, {x = 1, y = -8}, {x = 1, y = -7}}))
---- @see block.teleportto
+--- @see teleportto
 --- @see utils.tovararg
 function bulkteleportto(removecurrentblock, removetargetspot, ...)
 end

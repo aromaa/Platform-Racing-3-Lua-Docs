@@ -1,7 +1,7 @@
 --- Alien related variables and functions
 ...
 
---- Whether or not the alien exists in the level. Calling `alien.remove` sets this to false. Read-only.
+--- Whether or not the alien exists in the level. Calling `remove` sets this to false. Read-only.
 exists = true
 
 --- The absolute x-position of the alien.
@@ -41,17 +41,25 @@ alienmaxvel = 10
 alienmaxaccel = 0.5
 
 --- The initial rotation, in degrees, of the alien's next bullet. This is set to a random angle whenever the alien's ammo reaches 0.
-alienaimangle = 0
+aimangle = 0
 
---- How many ticks of shooting remain. This number decreases by 1 every tick regardless of if the alien fires a bullet during that tick or not.
+--- A multiplier that controls by how many degrees `aimangle` can change whenever `ammo` hits 0.
+--- Default value 1 means full range (180 degrees), 0.5 means half range (90 degrees), 0 means aimangle is locked, etc.
+aimanglerandomness = 1
+
+--- How many ticks of shooting remain. This number decreases by 1 every tick regardless of if the alien fires a bullet during that tick or not. By default, the alien will spawn with `maxammo` ammo.
 ammo = 0
 
---- How much ammo the alien can begin with. Upon reaching 0 ammo, the alien will reload a random amount of ammo between `maxammo / 4 `and` maxammo`.
+--- The maximum ammo the alien can reload to. Upon reaching 0 ammo, the alien will reload a random amount of ammo between `minammo` and `maxammo`.
 --- By default 200
-maxammo = 0
+maxammo = 200
+
+--- The minimum ammo the alien can reload to. Upon reaching 0 ammo, the alien will reload a random amount of ammo between `minammo` and `maxammo`.
+--- By default 25% of `maxammo`
+minammo = 50
 
 --- The ammo threshold for the alien's shooting. The alien's ammo must be below this amount (and above 0) for any bullets to be spawned.
---- By default 150
+--- By default 75% of `maxammo`
 --- @usage -- Creates an alien that fires one bullet every 2 ticks without ever pausing its shooting, and very rarely changes its aim direction.
 ----local myAlien = game.level.newAlien(1, os.time(), toobject{
 ----    reload = 2, -- Fire every 2 ticks
@@ -104,6 +112,6 @@ rotationspeed = 0
 --- By default 1
 rotationrandomness = 1
 
---- Removes the alien from the map. Sets the `alien.exists` field to false.
+--- Removes the alien from the map. Sets the `exists` field to false.
 function remove()
 end
