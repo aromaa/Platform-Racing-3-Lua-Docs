@@ -152,7 +152,10 @@ function getmetadata(key, defaultValue)
 end
 
 --- Returns a player timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+---
 --- Unlike `game.newTimer`, these timers are only called after the game is started and while the player is alive.
+---
+--- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
 --- @tparam int maxCount How many intervals will be completed.
 --- @tparam function listener The listener to be called every time an iteration is completed.

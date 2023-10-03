@@ -73,7 +73,10 @@ function getPlayer(index)
 end
 
 --- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- 
 --- Unlike `player.newTimer` and other tick handlers, these timers can run before the game has finished initializing and after the player is dead.
+--- 
+--- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
 --- @tparam int maxCount How many intervals will be completed.
 --- @tparam function listener The listener to be called every time an iteration is completed.
