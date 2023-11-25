@@ -61,11 +61,11 @@ minammo = 50
 --- The ammo threshold for the alien's shooting. The alien's ammo must be below this amount (and above 0) for any bullets to be spawned.
 --- By default 75% of `maxammo`
 --- @usage -- Creates an alien that fires one bullet every 2 ticks without ever pausing its shooting, and very rarely changes its aim direction.
-----local myAlien = game.level.newAlien(1, os.time(), toobject{
-----    reload = 2, -- Fire every 2 ticks
-----    maxammo = 4000, -- Start with 4000 ammo
-----    ammothreshold = 5000 -- Enable shooting when ammo is below 5000 (which is always the case, since the max is 4000)
-----})
+---- local myAlien = game.level.newAlien(1, os.time(), toobject{
+----     reload = 2, -- Fire every 2 ticks
+----     maxammo = 4000, -- Start with 4000 ammo
+----     ammothreshold = 5000 -- Enable shooting when ammo is below 5000 (which is always the case, since the max is 4000)
+---- })
 ammothreshold = 150
 
 --- The acceleration of the alien's next bullet (the amount of speed added per tick).

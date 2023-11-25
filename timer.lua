@@ -7,7 +7,7 @@ elapsedMS = 0
 --- How many intervals have been completed.
 currentCount = 0
 
---- How many intervals will be completed.
+--- How many intervals will be completed. Set to -1 for infinite intervals.
 maxCount = 0
 
 --- How many milliseconds must pass to complete an interval.

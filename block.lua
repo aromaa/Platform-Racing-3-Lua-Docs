@@ -23,19 +23,19 @@ ypos = 0
 --- @see eventlistener
 --- @see utils.instanceof
 --- @usage game.level.getBlockAt(5, 7).onBreak.addListener(function(event)
-----    event.cancelled = true --Prevents the block from breaking
-----    
-----    local block = tolua(event.block)
-----    local side = tolua(event.side)
-----    local reason = tolua(event.reason)
-----    
-----    if tolua(instanceof(reason, Projectile)) then --Checks if an item was used to break the block
-----        local shooter = tolua(reason.shooter)
-----        if tolua(instanceof(shooter, LocalPlayer)) then --Checks if the shooter is the local player
-----            shooter.hurt()
-----        end
-----    end
-----end)
+----     event.cancelled = true --Prevents the block from breaking
+----     
+----     local block = tolua(event.block)
+----     local side = tolua(event.side)
+----     local reason = tolua(event.reason)
+----     
+----     if tolua(instanceof(reason, Projectile)) then --Checks if an item was used to break the block
+----         local shooter = tolua(reason.shooter)
+----         if tolua(instanceof(shooter, LocalPlayer)) then --Checks if the shooter is the local player
+----             shooter.hurt()
+----         end
+----     end
+---- end)
 onBreak = nil
 
 --- Tries to move the block to a specified direction. Move delay and the option to move the player can be passed, too.

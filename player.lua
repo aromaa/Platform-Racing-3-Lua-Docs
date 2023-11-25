@@ -136,6 +136,12 @@ mousey = 0
 function hurt(damage, vel, recovery)
 end
 
+--- Makes the player finish the level.
+--- This would grant victory in a race and defeat in a deathmatch.
+--- For other game types that determine placing based on a condition, such as coin fiend, the player's placing will still be determined based on that condition once all players have finished.
+function finish()
+end
+
 --- Sets a metadata with a specified key-value pair to the player.
 --- @tparam string key Name of the metadata variable (the key)
 --- @param value Value of the metadata variable
@@ -157,13 +163,13 @@ end
 ---
 --- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
---- @tparam int maxCount How many intervals will be completed.
+--- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
 --- @tparam function listener The listener to be called every time an iteration is completed.
 --- @treturn timer The created timer object.
 --- @usage healthRegenTimer = player.newTimer(1000 * 6, 9999999, function()
 ----   -- Heals 1 health every 6 seconds
 ----   player.health = tolua(player.health) + 1
-----end)
+---- end)
 function newTimer(interval, maxCount, listener)
 end
 
@@ -260,7 +266,7 @@ end
 --- 
 --- * !horizontal: (***float***) the initial horizontal speed of the projectile when thrown. *[ Default 4｜Min -9999｜Max 99999 ]*
 --- 
---- * !post-gravity: (***float***) the gravity to be applied to the projectile in pixels per tick after being detached from a block. *[Default 1｜Min -9999｜Max 99999 ]*
+--- * !postgravity: (***float***) the gravity to be applied to the projectile in pixels per tick after being detached from a block. *[Default 1｜Min -9999｜Max 99999 ] Displayed as **post-gravity** under blast settings in block editor* 
 ---
 --- * !vertical: (***float***) the initial vertical speed of the projectile when thrown. *[ Default -10｜Min -9999｜Max 99999 ]*
 --- 
@@ -544,14 +550,21 @@ function giveitem(item, settings)
 end
 
 --- Gets the current item of the player, and returns it as an AS3 Object.
---- @usage player.getitem()
+--- @usage local item = totable(player.getitem())
+---- local item_name = item.settings.typename
+---- local item_ammo = item.settings.ammo
 --- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value.
 --- 
 ---### Fields ###
 --- 
---- *!settings: The properties of the current item as an AS3 Object. These properties are the exact same properties listed under the item in player.getitem().
----
+--- * !settings: The properties of the current item as an AS3 Object. These properties are the exact same properties listed under the item in `getitem`, with the addition of the following:
+---     
+---     + !type: (***string***) the abbreviated item name. (e.g. "l" for lasergun, "bo" for bow, etc.)
+---     
+---     + !typename: (***string***) the full item name. (e.g. "lasergun", "bow", etc.)
+--- 
 --- @see giveitem
+--- @see utils.totable
 function getitem()
 end
 
@@ -592,8 +605,8 @@ end
 
 --- Plays a sound effect to the player.
 --- @tparam int id Id of the played sound effect.
---
--- (0: jetpack, 1: level start, 2: sword, 3: lightning, 4: coin, 5: jump, 6: item block, 7: black hole, 8: rocket launcher, 9: shatter, 10: sad block, 11: laser gun hit, 12: ready, 13: explosion, 14: teleport, 15: match end, 16: shield, 17: shield extra, 18: bow draw, 19: water enter, 20: happy block, 21: speed burst end, 22: speed burst, 23: bump, 24: cheer, 25: laser gun shot, 26: ouch, 27: bouncy block, 28: bow fire, 29: water exit, 30: portable block, 31: superjump, 32: angel wings, 33: water effect, 34: water effect, 35: water effect, 36: water effect, 37: freeze ray, 38: snowball hit, 39: napalm, 40: heart, 41: C3 piano note, 42: D3 piano note, 43: E3 piano note, 44: F3 piano note, 45: G3 piano note, 46: A4 piano note, 47: B4 piano note, 48: C4 piano note)
+----
+----(0: jetpack, 1: level start, 2: sword, 3: lightning, 4: coin, 5: jump, 6: item block, 7: black hole, 8: rocket launcher, 9: shatter, 10: sad block, 11: laser gun hit, 12: ready, 13: explosion, 14: teleport, 15: match end, 16: shield, 17: shield extra, 18: bow draw, 19: water enter, 20: happy block, 21: speed burst end, 22: speed burst, 23: bump, 24: cheer, 25: laser gun shot, 26: ouch, 27: bouncy block, 28: bow fire, 29: water exit, 30: portable block, 31: superjump, 32: angel wings, 33: water effect, 34: water effect, 35: water effect, 36: water effect, 37: freeze ray, 38: snowball hit, 39: napalm, 40: heart, 41: C3 piano note, 42: D3 piano note, 43: E3 piano note, 44: F3 piano note, 45: G3 piano note, 46: A4 piano note, 47: B4 piano note, 48: C4 piano note)
 --- @tparam number volume Volume of the played sound effect.
 --- @usage player.playsound(6, 2)
 function playsound(id, volume)

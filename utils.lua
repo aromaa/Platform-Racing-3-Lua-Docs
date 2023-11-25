@@ -26,6 +26,18 @@ LocalPlayer = nil
 function tolua(value)
 end
 
+--- Converts game object / game array to Lua. This allows iteration over its fields.
+--- 
+--- The Lua table is a copy of the original game data. Therefore, modifications made to the Lua table will not affect the original object / array.
+--- @param value The value to convert.
+--- @treturn table Lua table representing the value.
+--- @usage local players = totable(game.getAllPlayers())
+---- for i, v in pairs(players) do
+----     v.setmetadata("index", i)
+---- end
+function totable(value)
+end
+
 --- Converts Lua value to game object. This allows the usage of options in more complex functions.
 --- @param value The value to convert.
 --- @return The game object.
