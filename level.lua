@@ -74,9 +74,9 @@ end
 --- "Raster graphics" refers to pixel data. Stamps are used for directly storing and manipulating pixel data before drawing to an `artlayer`, rather than performing the more artsy operations you'd find on a `sprite`.
 --- 
 --- An example use case is to draw some pixel data and then draw it to an art layer with some translation, scaling, and/or rotation applied. Another example use case would be to draw the same pixels to multiple art layers. Instead of repeating the same draw operations for each layer, you can perform the operations to one stamp, and then draw the stamp to each layer.
---- @tparam int width The width of the stamp in pixels. By default 64. Cannot be lesser than 1 or greater than 512, or else the function will fail and return nil. 
---- @tparam int height The height of the stamp in pixels. By default 64. Cannot be lesser than 1 or greater than 512, or else the function will fail and return nil. 
---- @treturn stamp The new stamp, or nil if the player has backgrounds disabled in their settings or if the width and/or height were invalid.
+--- @tparam int width The width of the stamp in pixels. By default 64. This value is clamped to the range of 1-512. 
+--- @tparam int height The height of the stamp in pixels. By default 64. This value is clamped to the range of 1-512.  
+--- @treturn stamp The new stamp, or nil if the player has backgrounds disabled in their settings.
 --- @see stamp
 --- @usage local stamp = tolua(game.level.newStamp(500, 500))
 ---- if stamp then
