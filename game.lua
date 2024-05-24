@@ -7,11 +7,11 @@ level = nil
 --- A list the player's settings and client information.
 settings = {
 	isMobile = false, -- Is the client running on iOS or Android? Read-only.
-	isGuest = false, -- Is the player's sound muted? Read-only.
+	isGuest = false, -- Is the player a guest? Read-only.
 	isMuted = false, -- Is the player's sound muted? Read-only.
 	drawBackgrounds = false, -- Does the player have art backgrounds / art lua enabled? Read-only.
 	soundVolume = 100, -- The player's sound volume, expressed as a value ranging from 0 - 100. Read-only.
-	musicVolume = 100 -- The player's sound volume, expressed as a value ranging from 0 - 100. Read-only.
+	musicVolume = 100 -- The player's music volume, expressed as a value ranging from 0 - 100. Read-only.
 }
 
 --- The amount of players in the game. Read-only.

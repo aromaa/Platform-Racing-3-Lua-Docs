@@ -143,7 +143,7 @@ end
 function curveTo(controlX, controlY, anchorX, anchorY)
 end
 
---- Draws a quadratic Bezier curve (using the current line style) from the current drawing position to the given end position, and sets the drawing position to the end position.
+--- Draws a cubic Bezier curve (using the current line style) from the current drawing position to the given end position, and sets the drawing position to the end position.
 --- @tparam number controlX1 The x-coordinate of the first control point. The control points determine the shape of the curvature.
 --- @tparam number controlY1 The y-coordinate of the first control point. The control points determine the shape of the curvature.
 --- @tparam number controlX2 The x-coordinate of the second control point. The control points determine the shape of the curvature.
