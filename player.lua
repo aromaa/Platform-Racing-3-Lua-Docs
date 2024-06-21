@@ -16,6 +16,12 @@ health = 5
 --- Player's max health.
 maxhealth = 5
 
+--- Player's current coin count.
+coins = 0
+
+--- How many times per second some client physics will be updated. Setting this value overrides the client's default behavior (which, at time of writing, is simply using the number 27). Set this value to 0 to restore default behavior.
+fps = 27
+
 --- Player's current rotation in degrees.
 --- Rotation can only be set to values dividable by 90 degrees.
 rotation = 0
@@ -145,7 +151,7 @@ end
 --- Sets a metadata with a specified key-value pair to the player.
 --- @tparam string key Name of the metadata variable (the key)
 --- @param value Value of the metadata variable
---- @usage player.setmetadata("coins", 10)
+--- @usage player.setmetadata("NFTs", 10)
 function setmetadata(key, value)
 end
 
@@ -153,7 +159,7 @@ end
 --- @tparam string key The key (metadata variable name) that's used to find its value.
 --- @param defaultValue The value to return if the searched key does not exists. By default no specific value is returned.
 --- @return Returns the key's value. Returns defaultValue instead if the key isn't found.
---- @usage player.getmetadata("coins", 0)
+--- @usage player.getmetadata("NFTs", 0)
 function getmetadata(key, defaultValue)
 end
 
@@ -551,8 +557,8 @@ end
 
 --- Gets the current item of the player, and returns it as an AS3 Object.
 --- @usage local item = totable(player.getitem())
----- local item_name = item.settings.typename
----- local item_ammo = item.settings.ammo
+---- local item_name = item.typename
+---- local item_ammo = item.ammo
 --- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value.
 --- 
 ---### Fields ###

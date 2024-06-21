@@ -54,6 +54,10 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
+---- * !spreadMethod: (***string***) Which spread method to use. Can be either "pad", "reflect", or "repeat". By default "pad".
+---- 
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Can be either "rgb" or "linearRGB". By default "rgb".
+---- 
 --- @see endFill
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
