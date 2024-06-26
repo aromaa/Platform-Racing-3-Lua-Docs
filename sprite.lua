@@ -54,6 +54,10 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
+---- * !spreadMethod: (***string***) Which spread method to use. Can be either "pad", "reflect", or "repeat". By default "pad".
+---- 
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Can be either "rgb" or "linearRGB". By default "rgb".
+---- 
 --- @see endFill
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
@@ -143,7 +147,7 @@ end
 function curveTo(controlX, controlY, anchorX, anchorY)
 end
 
---- Draws a quadratic Bezier curve (using the current line style) from the current drawing position to the given end position, and sets the drawing position to the end position.
+--- Draws a cubic Bezier curve (using the current line style) from the current drawing position to the given end position, and sets the drawing position to the end position.
 --- @tparam number controlX1 The x-coordinate of the first control point. The control points determine the shape of the curvature.
 --- @tparam number controlY1 The y-coordinate of the first control point. The control points determine the shape of the curvature.
 --- @tparam number controlX2 The x-coordinate of the second control point. The control points determine the shape of the curvature.
