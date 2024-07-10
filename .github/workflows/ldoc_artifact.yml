@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Isolate LDoc source
         run: |
             mkdir "${{ runner.temp }}/source/"
@@ -35,7 +35,7 @@ jobs:
             done
       - name: Setup Pages
         if: ${{ inputs.deploy_page }} 
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: Setup Lua
         uses: leafo/gh-actions-lua@v10
         with:
@@ -50,7 +50,7 @@ jobs:
       - name: Run LDoc
         run: ldoc "${{ runner.temp }}/source/" --template "${{ runner.temp }}/source/" --format="markdown" -d "${{ runner.temp }}/LDOC"
       - name: Upload Artifact (ZIP)
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
             name: 'LDOC_zip'
             path: "${{ runner.temp }}/LDOC"
@@ -64,30 +64,40 @@ jobs:
             tar \
               --dereference --hard-dereference \
               --directory "${{ runner.temp }}/LDOC/" \
-              -cvf "${{ runner.temp }}/artifact.tar" \
-              .
+              -cvf "${{ runner.temp }}/LDOC_tar.tar" \
+              --exclude=.git \
+              --exclude=.github \
+              --force-local \
+              "."
       - name: Upload Artifact (TAR)
-        if: ${{ inputs.deploy_page }} 
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
-            name: 'LDOC_tar'
-            path: ${{ runner.temp }}/artifact.tar
-            retention-days: 0
-    
+          name: 'LDOC_tar'
+          path: "${{ runner.temp }}/LDOC_tar.tar"
+          retention-days: 0
+
   # Optional page deployment job
   deploy:
     if: ${{ inputs.deploy_page }} 
+    
+    # Add a dependency to the build job
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
     runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4.0.5 # or specific "vX.X.X" version tag for this action
         with:
           artifact_name: 'LDOC_tar'
