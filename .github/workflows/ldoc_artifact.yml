@@ -56,7 +56,6 @@ jobs:
             path: "${{ runner.temp }}/LDOC"
             retention-days: 0
       - name: Create Artifact (TAR)
-        if: ${{ inputs.deploy_page }} 
         run: |
             chmod -c -R +rX "${{ runner.temp }}/LDOC/" | while read line; do
               echo "::warning title=Invalid file permissions automatically fixed::$line"
