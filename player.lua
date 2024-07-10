@@ -258,6 +258,12 @@ end
 --- 
 --- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
 --- 
+---### Chili Pepper ("chilipepper") ###
+--- 
+--- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
+--- 
+--- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 500｜Min 0｜Max 99999 ]*
+--- 
 ---### Buzzsaw ("buzzsaw") ###
 --- 
 --- * !ammo: (***int***) the amount of uses the item has. *[ Default 1｜Min 0｜Max 99999 ]*
